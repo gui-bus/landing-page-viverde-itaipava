@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ArrowLeft, ArrowUpRight, BedDouble, Maximize2, ChevronLeft, ChevronRight, X } from 'lucide-react'
+import { ArrowUpRight, BedDouble, ChevronLeft, ChevronRight, Maximize2, X } from 'lucide-react'
 import { Header } from '@/components/home/header'
 import { Footer } from '@/components/home/footer'
 
@@ -54,27 +54,12 @@ const unitsData: UnitItem[] = [
     ],
     features: ['4 suítes com closet', 'Piscina aquecida privativa', 'Living com pé-direito duplo', 'Jardim privativo'],
   },
-  {
-    id: 'lazer-condominio',
-    title: 'Lazer do Condomínio',
-    type: 'Clube & Convivência Completa',
-    area: 'Área Comum Exclusiva',
-    description: 'Infraestrutura completa de convivência, esporte e lazer para toda a família em meio à natureza.',
-    photos: [
-      { label: 'Convivência', src: '/viverde/geral/area_de_convivencia.webp', alt: 'Área de Convivência Viverde' },
-      { label: 'Parquinho', src: '/viverde/geral/parquinho_infantil.webp', alt: 'Parquinho Infantil Viverde' },
-      { label: 'Quadra', src: '/viverde/geral/quadra_poliesportiva.webp', alt: 'Quadra Poliesportiva Viverde' },
-      { label: 'Salão de Festas', src: '/viverde/geral/salao_de_festas.webp', alt: 'Salão de Festas Viverde' },
-    ],
-    features: ['Salão de festas decorado', 'Quadra poliesportiva', 'Playground arborizado', 'Segurança 24h'],
-  },
 ]
 
 export default function UnidadesPage() {
   const [activePhotoIndices, setActivePhotoIndices] = useState<{ [unitId: string]: number }>({
     'casa-03': 0,
     'casa-04': 0,
-    'lazer-condominio': 0,
   })
 
   const [lightboxUnit, setLightboxUnit] = useState<{ unitId: string; photoIdx: number } | null>(null)
@@ -83,76 +68,118 @@ export default function UnidadesPage() {
     setActivePhotoIndices((prev) => ({ ...prev, [unitId]: index }))
   }
 
+  const handlePrevPhoto = (unitId: string) => {
+    const unit = unitsData.find((u) => u.id === unitId)
+    if (!unit) return
+    setActivePhotoIndices((prev) => {
+      const current = prev[unitId] ?? 0
+      const next = (current - 1 + unit.photos.length) % unit.photos.length
+      return { ...prev, [unitId]: next }
+    })
+  }
+
+  const handleNextPhoto = (unitId: string) => {
+    const unit = unitsData.find((u) => u.id === unitId)
+    if (!unit) return
+    setActivePhotoIndices((prev) => {
+      const current = prev[unitId] ?? 0
+      const next = (current + 1) % unit.photos.length
+      return { ...prev, [unitId]: next }
+    })
+  }
+
   const currentUnitForLightbox = lightboxUnit ? unitsData.find((u) => u.id === lightboxUnit.unitId) : null
   const currentPhotoForLightbox = currentUnitForLightbox ? currentUnitForLightbox.photos[lightboxUnit!.photoIdx] : null
 
   return (
-    <main className="w-full bg-[#f4f2ed] dark:bg-[#161914] text-[#24271d] dark:text-[#f1efe8] transition-colors min-h-screen">
-      
+    <main className="w-full bg-[#f4f2ed] dark:bg-[#161616] text-[#24271d] dark:text-[#f1efe8] transition-colors min-h-screen">
       {lightboxUnit && currentUnitForLightbox && currentPhotoForLightbox && (
         <div
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/95 p-4 sm:p-8 backdrop-blur-md"
-          role="dialog"
-          aria-modal="true"
+          className="fixed inset-0 z-50 flex justify-center bg-black/80 backdrop-blur-xs"
           onClick={() => setLightboxUnit(null)}
         >
-          <button
-            className="absolute top-6 right-6 w-11 h-11 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white hover:text-black transition-colors cursor-pointer z-10"
+          <div
+            className="relative w-full max-w-[1760px] h-full flex flex-col items-center justify-center bg-black/95 p-4 sm:p-8 backdrop-blur-md animate-in fade-in duration-200 overflow-hidden"
+            role="dialog"
+            aria-modal="true"
             onClick={() => setLightboxUnit(null)}
-            aria-label="Fechar"
           >
-            <X size={20} />
-          </button>
+            <button
+              type="button"
+              className="absolute top-6 right-6 w-11 h-11 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white hover:text-black transition-colors cursor-pointer z-10"
+              onClick={() => setLightboxUnit(null)}
+              aria-label="Fechar"
+            >
+              <X size={20} />
+            </button>
 
-          <button
-            className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white hover:text-black transition-colors cursor-pointer z-10"
-            onClick={(e) => {
-              e.stopPropagation()
-              setLightboxUnit({
-                unitId: lightboxUnit.unitId,
-                photoIdx: (lightboxUnit.photoIdx - 1 + currentUnitForLightbox.photos.length) % currentUnitForLightbox.photos.length,
-              })
-            }}
-            aria-label="Imagem anterior"
-          >
-            <ChevronLeft size={24} />
-          </button>
+            <button
+              type="button"
+              className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white hover:text-black transition-colors cursor-pointer z-10"
+              onClick={(e) => {
+                e.stopPropagation()
+                setLightboxUnit({
+                  unitId: lightboxUnit.unitId,
+                  photoIdx: (lightboxUnit.photoIdx - 1 + currentUnitForLightbox.photos.length) % currentUnitForLightbox.photos.length,
+                })
+              }}
+              aria-label="Imagem anterior"
+            >
+              <ChevronLeft size={24} />
+            </button>
 
-          <div className="relative max-w-5xl max-h-[80vh] flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
-            <img
-              src={currentPhotoForLightbox.src}
-              alt={currentPhotoForLightbox.alt}
-              className="max-w-full max-h-[80vh] object-contain rounded-md shadow-2xl"
-            />
-          </div>
+            <div className="relative max-w-5xl max-h-[80vh] flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+              <img
+                src={currentPhotoForLightbox.src}
+                alt={currentPhotoForLightbox.alt}
+                className="max-w-full max-h-[80vh] object-contain rounded-md shadow-2xl"
+              />
+            </div>
 
-          <button
-            className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white hover:text-black transition-colors cursor-pointer z-10"
-            onClick={(e) => {
-              e.stopPropagation()
-              setLightboxUnit({
-                unitId: lightboxUnit.unitId,
-                photoIdx: (lightboxUnit.photoIdx + 1) % currentUnitForLightbox.photos.length,
-              })
-            }}
-            aria-label="Próxima imagem"
-          >
-            <ChevronRight size={24} />
-          </button>
+            <button
+              type="button"
+              className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white hover:text-black transition-colors cursor-pointer z-10"
+              onClick={(e) => {
+                e.stopPropagation()
+                setLightboxUnit({
+                  unitId: lightboxUnit.unitId,
+                  photoIdx: (lightboxUnit.photoIdx + 1) % currentUnitForLightbox.photos.length,
+                })
+              }}
+              aria-label="Próxima imagem"
+            >
+              <ChevronRight size={24} />
+            </button>
 
-          <div className="mt-4 text-center text-white/80 text-xs sm:text-sm uppercase tracking-widest">
-            <span>{currentUnitForLightbox.title}</span>
-            <span className="mx-2">·</span>
-            <span className="font-medium text-white">{currentPhotoForLightbox.label}</span>
+            <div className="mt-4 text-center text-white/80 text-xs sm:text-sm uppercase tracking-widest">
+              <span>{currentUnitForLightbox.title}</span>
+              <span className="mx-2">·</span>
+              <span className="font-medium text-white">{currentPhotoForLightbox.label}</span>
+            </div>
           </div>
         </div>
       )}
 
-      
       <Header variant="default" />
 
-      
-      <section className="py-16 sm:py-24 px-4 sm:px-8 md:px-12 max-w-4xl">
+      <div className="relative overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="absolute -right-16 sm:-right-24 md:-right-32 -bottom-16 sm:-bottom-24 md:-bottom-32 w-[clamp(600px,90vw,1450px)] pointer-events-none select-none z-0 opacity-[0.035] flex justify-end items-end"
+        >
+          <img
+            src="/logo/icon_black.svg"
+            alt=""
+            className="w-full h-auto object-contain object-right-bottom dark:hidden"
+          />
+          <img
+            src="/logo/icon_white.svg"
+            alt=""
+            className="w-full h-auto object-contain object-right-bottom hidden dark:block"
+          />
+        </div>
+
+        <section className="relative z-10 py-16 sm:py-24 px-4 sm:px-8 md:px-12 max-w-4xl">
         <p className="text-[#849181] dark:text-[#a4aa9d] text-xs uppercase tracking-[0.2em] font-semibold mb-3">
           Disponibilidade & Tipologias
         </p>
@@ -165,21 +192,19 @@ export default function UnidadesPage() {
         </p>
       </section>
 
-      
-      <section className="py-12 sm:py-20 px-4 sm:px-8 md:px-12 bg-black/[0.02] dark:bg-white/[0.02] border-t border-black/5 dark:border-white/5">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {unitsData.map((unit, index) => {
+      <section className="relative z-10 pb-16 sm:pb-28 px-4 sm:px-8 md:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full">
+          {unitsData.map((unit) => {
             const currentPhotoIdx = activePhotoIndices[unit.id] ?? 0
             const currentPhoto = unit.photos[currentPhotoIdx] || unit.photos[0]
 
             return (
               <article
                 key={unit.id}
-                className="flex flex-col rounded-xl overflow-hidden border border-black/10 dark:border-white/10 bg-white dark:bg-[#1d211b] shadow-sm hover:shadow-xl transition-all duration-300"
+                className="flex flex-col transition-colors duration-300 w-full"
               >
-                
                 <div
-                  className="relative aspect-4/3 overflow-hidden bg-black/10 cursor-pointer group"
+                  className="relative aspect-4/3 sm:aspect-[16/10] rounded-2xl overflow-hidden bg-black/10 cursor-pointer group select-none"
                   onClick={() => setLightboxUnit({ unitId: unit.id, photoIdx: currentPhotoIdx })}
                 >
                   <img
@@ -187,61 +212,92 @@ export default function UnidadesPage() {
                     alt={currentPhoto.alt}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  <span className="absolute bottom-3 left-3 text-xs uppercase tracking-wider font-semibold text-white px-2.5 py-1 bg-black/60 backdrop-blur-sm rounded">
-                    0{index + 1} · {currentPhoto.label}
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
+
+                  <span className="absolute top-3.5 left-3.5 text-[10px] uppercase tracking-widest text-white font-semibold bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/15 shadow-sm z-10">
+                    {currentPhoto.label}
                   </span>
-                  <span className="absolute top-3 right-3 text-xs uppercase tracking-wider text-white opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 px-2 py-1 rounded">
-                    Ampliar
-                  </span>
+
+                  <button
+                    type="button"
+                    onClick={(e) => handlePrevPhoto(unit.id, e)}
+                    aria-label="Foto anterior"
+                    className="absolute left-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 backdrop-blur-xs cursor-pointer"
+                  >
+                    <ChevronLeft size={18} />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={(e) => handleNextPhoto(unit.id, e)}
+                    aria-label="Próxima foto"
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 backdrop-blur-xs cursor-pointer"
+                  >
+                    <ChevronRight size={18} />
+                  </button>
+
+                  <div className="absolute bottom-3 inset-x-0 flex justify-center gap-1.5 z-10">
+                    {unit.photos.map((_, dotIdx) => (
+                      <button
+                        key={dotIdx}
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          setActivePhotoIndices((prev) => ({ ...prev, [unit.id]: dotIdx }))
+                        }}
+                        aria-label={`Ir para foto ${dotIdx + 1}`}
+                        className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                          dotIdx === currentPhotoIdx
+                            ? 'w-6 bg-white shadow-sm'
+                            : 'w-1.5 bg-white/50 hover:bg-white/80'
+                        }`}
+                      />
+                    ))}
+                  </div>
                 </div>
 
-                <div className="p-6 flex flex-col flex-1 justify-between">
+                <div className="pt-6 flex flex-col justify-between flex-1">
                   <div>
-                    
-                    <div className="flex flex-wrap gap-1.5 mb-5">
-                      {unit.photos.map((p, pIdx) => (
-                        <button
-                          key={p.label}
-                          type="button"
-                          className={`px-3 py-1 rounded-full text-[11px] uppercase tracking-wider font-medium transition-all cursor-pointer ${
-                            currentPhotoIdx === pIdx
-                              ? 'bg-[#161914] text-white dark:bg-[#B88A2D] dark:text-[#161914] font-semibold'
-                              : 'border border-black/10 dark:border-white/10 text-[#73786e] dark:text-[#a4aa9d] hover:border-black/30'
-                          }`}
-                          onClick={() => setPhotoForUnit(unit.id, pIdx)}
-                        >
-                          {p.label}
-                        </button>
-                      ))}
+                    <div className="flex items-start justify-between gap-4 mb-2">
+                      <h2 className="font-heading text-xl sm:text-2xl font-normal tracking-tight">
+                        {unit.title}
+                      </h2>
+                      <span className="text-xs uppercase tracking-widest text-[#B88A2D] font-semibold">
+                        {unit.status}
+                      </span>
                     </div>
 
-                    <p className="text-[11px] uppercase tracking-widest text-[#849181] dark:text-[#a4aa9d] font-semibold mb-1">
-                      {unit.type}
+                    <p className="text-xs sm:text-sm text-[#73786e] dark:text-[#a4aa9d] mb-4 font-light">
+                      {unit.subtitle}
                     </p>
-                    <h2 className="font-heading text-2xl sm:text-3xl font-medium mb-3">
-                      {unit.title}
-                    </h2>
 
-                    <div className="flex items-center gap-2 text-xs font-semibold text-[#B88A2D] mb-4">
-                      <BedDouble size={16} /> {unit.area} <Maximize2 size={16} />
+                    <div className="grid grid-cols-2 gap-3 py-3 border-y border-black/5 dark:border-white/5 mb-4">
+                      <div>
+                        <span className="block text-[10px] uppercase tracking-wider text-[#849181] dark:text-[#a4aa9d]">Área Privativa</span>
+                        <span className="text-sm font-semibold text-[#24271d] dark:text-[#f1efe8]">{unit.area}</span>
+                      </div>
+                      <div>
+                        <span className="block text-[10px] uppercase tracking-wider text-[#849181] dark:text-[#a4aa9d]">Terreno</span>
+                        <span className="text-sm font-semibold text-[#24271d] dark:text-[#f1efe8]">{unit.lot}</span>
+                      </div>
                     </div>
 
-                    <p className="text-sm text-[#73786e] dark:text-[#a4aa9d] leading-relaxed mb-6 font-light">
+                    <p className="text-xs sm:text-sm text-[#73786e] dark:text-[#a4aa9d] leading-relaxed mb-6 font-light">
                       {unit.description}
                     </p>
 
-                    <div className="space-y-1.5 mb-6 pt-4 border-t border-black/5 dark:border-white/5">
+                    <div className="space-y-2 mb-8 pt-5 border-t border-black/5 dark:border-white/5">
                       {unit.features.map((feat) => (
-                        <div key={feat} className="text-xs text-[#73786e] dark:text-[#a4aa9d] flex items-center gap-2">
-                          <span className="text-[#B88A2D]">✓</span> {feat}
+                        <div key={feat} className="text-xs sm:text-sm text-[#73786e] dark:text-[#a4aa9d] flex items-center gap-2">
+                          <span className="text-[#B88A2D] font-bold">✓</span> {feat}
                         </div>
                       ))}
                     </div>
                   </div>
 
                   <a
-                    className="w-full py-3.5 px-5 bg-[#161914] dark:bg-[#B88A2D] text-white dark:text-[#161914] text-xs uppercase tracking-widest font-semibold flex items-center justify-between rounded-lg hover:opacity-95 transition-opacity"
+                    className="w-full py-4 px-6 bg-[#161616] dark:bg-[#B88A2D] hover:bg-[#B88A2D] dark:hover:bg-[#9e7421] text-white hover:text-white text-xs uppercase tracking-widest font-semibold flex items-center justify-between rounded-full transition-all duration-300 shadow-md hover:shadow-xl cursor-pointer"
                     href={`https://wa.me/5521997862692?text=${encodeURIComponent(`Olá! Gostaria de consultar a disponibilidade da ${unit.title} no Viverde Itaipava.`)}`}
                     target="_blank"
                     rel="noreferrer"
@@ -255,6 +311,7 @@ export default function UnidadesPage() {
           })}
         </div>
       </section>
+      </div>
 
       <Footer />
     </main>
