@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ArrowUpRight, ChevronDown, ChevronUp, Plus } from 'lucide-react'
+import { ArrowUpRight, ChevronDown, ChevronUp } from 'lucide-react'
 import { projectCategoriesData, projectImagesData } from './data'
 
 export interface ProjectSectionProps {
@@ -76,7 +76,7 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
   return (
     <section
       id="empreendimento"
-      className="py-20 sm:py-28 md:py-36 px-4 sm:px-8 md:px-12 bg-transparent text-[#24271d] dark:text-[#f1efe8] transition-colors"
+      className="pt-20 px-4 sm:px-8 md:px-12 bg-transparent text-[#24271d] dark:text-[#f1efe8] transition-colors"
     >
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
         <div>
@@ -93,7 +93,7 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
           </p>
           <a
             href="/unidades"
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-[#30382c] dark:text-[#c7b88d] hover:underline"
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-[#161914] dark:text-[#c7b88d] hover:underline"
           >
             Ver plantas e disponibilidade <ArrowUpRight size={14} />
           </a>
@@ -114,7 +114,7 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
               type="button"
               className={`px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-semibold transition-all cursor-pointer flex items-center gap-2 ${
                 isActive
-                  ? 'bg-[#30382c] text-white dark:bg-[#B88A2D] dark:text-[#161914] shadow-md'
+                  ? 'bg-[#161914] text-white dark:bg-[#B88A2D] dark:text-[#161914] shadow-md'
                   : 'border border-black/15 dark:border-white/15 text-[#73786e] dark:text-[#a4aa9d] hover:border-black/40 hover:text-black dark:hover:text-white bg-transparent'
               }`}
               onClick={() => handleCategoryChange(cat.id)}
@@ -149,7 +149,7 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
                     }
                   : undefined
               }
-              className={`group relative overflow-hidden rounded-xl sm:rounded-2xl bg-black/10 cursor-pointer text-left shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 ${
+              className={`group relative overflow-hidden rounded-xs bg-black/10 cursor-pointer text-left shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 ${
                 getBentoSpan(i, visibleProjects.length)
               } ${
                 isAppearing
@@ -166,19 +166,13 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10 transition-opacity duration-300 group-hover:from-black/95 group-hover:via-black/45" />
 
-              <div className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between">
-                <span className="text-[10px] uppercase tracking-widest text-[#d8cca8] font-semibold bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+              <div className="absolute top-4 left-4 z-20">
+                <span className="text-[10px] uppercase tracking-widest text-white font-semibold bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/15 shadow-sm">
                   {item.tag}
-                </span>
-                <span className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center group-hover:bg-[#B88A2D] group-hover:text-[#161914] transition-all group-hover:scale-110 shrink-0">
-                  <Plus size={15} />
                 </span>
               </div>
 
               <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 z-20 text-white">
-                <span className="text-[11px] text-white/60 font-semibold mb-1 block">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
                 <h3
                   className={`font-heading font-medium text-white mb-1 leading-snug ${
                     isLarge ? 'text-lg sm:text-2xl md:text-3xl max-w-xl' : 'text-base sm:text-lg md:text-xl'
@@ -200,7 +194,7 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
           <button
             type="button"
             onClick={handleToggleExpand}
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#30382c] dark:bg-[#B88A2D] text-white dark:text-[#161914] text-xs uppercase tracking-widest font-semibold hover:bg-[#24271d] dark:hover:bg-[#c7b88d] transition-all duration-300 shadow-md hover:shadow-xl hover:scale-[1.02] cursor-pointer"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#161914] dark:bg-[#B88A2D] text-white dark:text-[#161914] text-xs uppercase tracking-widest font-semibold hover:bg-[#24271d] dark:hover:bg-[#c7b88d] transition-all duration-300 shadow-md hover:shadow-xl hover:scale-[1.02] cursor-pointer"
           >
             <span>
               {isExpanded

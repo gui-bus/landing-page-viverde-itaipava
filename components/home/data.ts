@@ -1,15 +1,69 @@
 import type { FilmItem, GalleryItem, ProjectCategory, ProjectImageItem } from './types'
 
 export const galleryData: GalleryItem[] = [
-  { src: '/localizacao/location_01_vista_do_viverde_itaipava_residences.webp', alt: 'Vista panorâmica do Viverde entre montanhas', tag: 'Vista Panorâmica' },
-  { src: '/localizacao/location_02_clima_montanha_e_verdes.webp', alt: 'Clima de montanha e verdes de Itaipava', tag: 'Clima de Montanha' },
-  { src: '/localizacao/location_03_cachoeira.webp', alt: 'Cachoeiras cercadas pela Mata Atlântica', tag: 'Cachoeiras' },
-  { src: '/localizacao/location_04_ciclismo_e_trilhas.webp', alt: 'Ciclismo e trilhas na serra de Itaipava', tag: 'Trilhas & Esporte' },
-  { src: '/localizacao/location_05_mercado.webp', alt: 'Mercados e empórios selecionados', tag: 'Conveniência' },
-  { src: '/localizacao/location_06_adega.webp', alt: 'Adegas e cartas de vinhos exclusivas', tag: 'Adegas & Vinhos' },
-  { src: '/localizacao/location_07_bar.webp', alt: 'Bares acolhedores e drinques autorais', tag: 'Vida Noturna' },
-  { src: '/localizacao/location_08_produtos_locais.webp', alt: 'Produtos orgânicos e feiras da serra', tag: 'Produtos da Serra' },
-  { src: '/localizacao/location_09_restaurante.webp', alt: 'Polo gastronômico e bistrôs refinados', tag: 'Gastronomia' },
+  {
+    src: '/localizacao/location_01_vista_do_viverde_itaipava_residences.webp',
+    alt: 'Vista panorâmica do Viverde entre montanhas',
+    tag: 'Vista Panorâmica',
+    title: 'Vista Panorâmica',
+    text: 'Horizontes verdes e montanhas que emolduram o refúgio do Viverde.',
+  },
+  {
+    src: '/localizacao/location_02_clima_montanha_e_verdes.webp',
+    alt: 'Clima de montanha e verdes de Itaipava',
+    tag: 'Clima de Montanha',
+    title: 'Clima de Montanha',
+    text: 'Ar puro, noites amenas e a serenidade típica da serra fluminense.',
+  },
+  {
+    src: '/localizacao/location_03_cachoeira.webp',
+    alt: 'Cachoeiras cercadas pela Mata Atlântica',
+    tag: 'Cachoeiras',
+    title: 'Cachoeiras Naturais',
+    text: "Quedas d'água cristalinas e refúgios cercados pela Mata Atlântica preservada.",
+  },
+  {
+    src: '/localizacao/location_04_ciclismo_e_trilhas.webp',
+    alt: 'Ciclismo e trilhas na serra de Itaipava',
+    tag: 'Trilhas & Esporte',
+    title: 'Trilhas & Ciclismo',
+    text: 'Percursos e trilhas para caminhar, pedalar e se reconectar com a natureza.',
+  },
+  {
+    src: '/localizacao/location_05_mercado.webp',
+    alt: 'Mercados e empórios selecionados',
+    tag: 'Conveniência',
+    title: 'Mercados & Empórios',
+    text: 'Conveniência, ingredientes selecionados e produtos artesanais pertinho de casa.',
+  },
+  {
+    src: '/localizacao/location_06_adega.webp',
+    alt: 'Adegas e cartas de vinhos exclusivas',
+    tag: 'Adegas & Vinhos',
+    title: 'Adegas & Vinhos',
+    text: 'Rótulos nacionais e internacionais para apreciar ao lado da lareira.',
+  },
+  {
+    src: '/localizacao/location_07_bar.webp',
+    alt: 'Bares acolhedores e drinques autorais',
+    tag: 'Vida Noturna',
+    title: 'Bares & Coquetelaria',
+    text: 'Ambientes acolhedores, drinques autorais e noites agradáveis em Itaipava.',
+  },
+  {
+    src: '/localizacao/location_08_produtos_locais.webp',
+    alt: 'Produtos orgânicos e feiras da serra',
+    tag: 'Produtos da Serra',
+    title: 'Feiras da Serra',
+    text: 'Orgânicos frescos, queijos finos e delícias dos produtores locais da região.',
+  },
+  {
+    src: '/localizacao/location_09_restaurante.webp',
+    alt: 'Polo gastronômico e bistrôs refinados',
+    tag: 'Gastronomia',
+    title: 'Polo Gastronômico',
+    text: 'Bistrôs conceituados e alta culinária em um dos destinos mais charmosos do país.',
+  },
 ]
 
 export const filmsData: FilmItem[] = [

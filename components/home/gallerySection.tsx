@@ -1,6 +1,5 @@
 'use client'
 
-import { Plus } from 'lucide-react'
 import { galleryData } from './data'
 
 export interface GallerySectionProps {
@@ -44,7 +43,7 @@ export function GallerySection({ onSelectImage }: GallerySectionProps) {
           <button
             key={item.src + i}
             type="button"
-            className={`group relative overflow-hidden rounded-xl sm:rounded-2xl bg-black/10 cursor-pointer text-left shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 ${
+            className={`group relative overflow-hidden rounded-xs bg-black/10 cursor-pointer text-left shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 ${
               bentoSpans[i] || 'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px]'
             }`}
             onClick={() => onSelectImage(i)}
@@ -55,28 +54,27 @@ export function GallerySection({ onSelectImage }: GallerySectionProps) {
               alt={item.alt}
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10 transition-opacity duration-300 group-hover:from-black/95 group-hover:via-black/45" />
 
-            <div className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between">
-              <span className="text-[10px] uppercase tracking-widest text-[#d8cca8] font-semibold bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+            <div className="absolute top-4 left-4 z-20">
+              <span className="text-[10px] uppercase tracking-widest text-white font-semibold bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/15 shadow-sm">
                 {item.tag}
-              </span>
-              <span className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all group-hover:scale-110 shrink-0">
-                <Plus size={15} />
               </span>
             </div>
 
             <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 z-20 text-white">
-              <span className="text-[11px] text-white/60 font-semibold mb-1 block">
-                0{i + 1}
-              </span>
-              <p
-                className={`font-heading font-medium leading-snug text-white ${
-                  i === 0 ? 'text-lg sm:text-2xl md:text-3xl max-w-xl' : 'text-sm sm:text-base md:text-lg'
+              <h3
+                className={`font-heading font-medium text-white mb-1 leading-snug ${
+                  i === 0 ? 'text-lg sm:text-2xl md:text-3xl max-w-xl' : 'text-base sm:text-lg md:text-xl'
                 }`}
               >
-                {item.alt}
-              </p>
+                {item.title || item.alt}
+              </h3>
+              {item.text && (
+                <p className="text-xs sm:text-sm text-white/80 font-light leading-relaxed line-clamp-2 max-w-xl">
+                  {item.text}
+                </p>
+              )}
             </div>
           </button>
         ))}

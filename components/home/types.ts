@@ -2,6 +2,8 @@ export interface GalleryItem {
   src: string
   alt: string
   tag?: string
+  title?: string
+  text?: string
   video?: string
 }
 
