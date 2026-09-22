@@ -14,23 +14,6 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: 'Viverde Itaipava Résidences | Um jeito mais leve de viver',
   description: 'Casas de 3 e 4 suítes em Itaipava, com piscina aquecida, varanda gourmet e jardim privativo.',
-  icons: {
-    icon: [
-      {
-        url: '/logo/icon_black.svg',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/logo/icon_white.svg',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/logo/icon_black.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/logo/icon_black.svg',
-  },
 }
 
 export const viewport: Viewport = {
