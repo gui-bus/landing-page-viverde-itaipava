@@ -1,8 +1,9 @@
 'use client'
 
-import { ArrowLeft, ArrowUpRight, Check, Mail, MapPin, Phone } from 'lucide-react'
 import { useState } from 'react'
-import { AnimatedThemeToggler } from '@/components/ui/animatedThemeToggler'
+import { ArrowUpRight, Check, Mail, MapPin, Phone } from 'lucide-react'
+import { Header } from '@/components/home/header'
+import { Footer } from '@/components/home/footer'
 
 export default function ContatoPage() {
   const [submitted, setSubmitted] = useState(false)
@@ -14,19 +15,7 @@ export default function ContatoPage() {
 
   return (
     <main className="w-full bg-[#f4f2ed] dark:bg-[#161914] text-[#24271d] dark:text-[#f1efe8] transition-colors min-h-screen">
-      
-      <header className="w-full flex items-center justify-between py-6 px-4 sm:px-8 md:px-12 border-b border-black/5 dark:border-white/5">
-        <a className="block w-28 sm:w-36 h-auto" href="/">
-          <img src="/logo/logo_black.svg" alt="Viverde" className="w-full h-auto max-h-9 object-contain block dark:hidden" />
-          <img src="/logo/logo_white.svg" alt="Viverde" className="w-full h-auto max-h-9 object-contain hidden dark:block" />
-        </a>
-        <div className="flex items-center gap-4">
-          <AnimatedThemeToggler />
-          <a className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold hover:text-[#B88A2D] transition-colors" href="/">
-            <ArrowLeft size={14} /> Voltar ao início
-          </a>
-        </div>
-      </header>
+      <Header variant="default" />
 
       
       <section className="py-16 sm:py-24 px-4 sm:px-8 md:px-12 max-w-4xl">
@@ -63,7 +52,9 @@ export default function ContatoPage() {
               </div>
               <div className="flex items-center gap-3 text-sm">
                 <Phone size={18} className="text-[#B88A2D] shrink-0" />
-                <span>(24) 99999-9999 · Atendimento VIP</span>
+                <a href="https://wa.me/5521997862692" target="_blank" rel="noreferrer" className="hover:text-[#B88A2D] transition-colors">
+                  (21) 99786-2692 · Atendimento VIP
+                </a>
               </div>
               <div className="flex items-center gap-3 text-sm">
                 <Mail size={18} className="text-[#B88A2D] shrink-0" />
@@ -150,11 +141,7 @@ export default function ContatoPage() {
         </div>
       </section>
 
-      
-      <footer className="bg-[#1d211b] text-white py-12 px-4 sm:px-8 md:px-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60 uppercase tracking-widest border-t border-white/10">
-        <span>R. Neuza Goulart Brizola, 2005 · Itaipava · RJ</span>
-        <span>© 2026 Viverde · Todos os direitos reservados.</span>
-      </footer>
+      <Footer />
     </main>
   )
 }

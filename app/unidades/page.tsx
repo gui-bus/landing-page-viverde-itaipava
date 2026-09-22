@@ -1,8 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { ArrowLeft, ArrowUpRight, BedDouble, Maximize2, ShieldCheck, Trees, ChevronLeft, ChevronRight, X } from 'lucide-react'
-import { AnimatedThemeToggler } from '@/components/ui/animatedThemeToggler'
+import { ArrowLeft, ArrowUpRight, BedDouble, Maximize2, ChevronLeft, ChevronRight, X } from 'lucide-react'
+import { Header } from '@/components/home/header'
+import { Footer } from '@/components/home/footer'
 
 type PhotoItem = { label: string; src: string; alt: string }
 
@@ -148,18 +149,7 @@ export default function UnidadesPage() {
       )}
 
       
-      <header className="w-full flex items-center justify-between py-6 px-4 sm:px-8 md:px-12 border-b border-black/5 dark:border-white/5">
-        <a className="block w-28 sm:w-36 h-auto" href="/">
-          <img src="/logo/logo_black.svg" alt="Viverde" className="w-full h-auto max-h-9 object-contain block dark:hidden" />
-          <img src="/logo/logo_white.svg" alt="Viverde" className="w-full h-auto max-h-9 object-contain hidden dark:block" />
-        </a>
-        <div className="flex items-center gap-4">
-          <AnimatedThemeToggler />
-          <a className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold hover:text-[#B88A2D] transition-colors" href="/">
-            <ArrowLeft size={14} /> Voltar ao início
-          </a>
-        </div>
-      </header>
+      <Header variant="default" />
 
       
       <section className="py-16 sm:py-24 px-4 sm:px-8 md:px-12 max-w-4xl">
@@ -252,7 +242,7 @@ export default function UnidadesPage() {
 
                   <a
                     className="w-full py-3.5 px-5 bg-[#161914] dark:bg-[#B88A2D] text-white dark:text-[#161914] text-xs uppercase tracking-widest font-semibold flex items-center justify-between rounded-lg hover:opacity-95 transition-opacity"
-                    href={`https://wa.me/5524999999999?text=${encodeURIComponent(`Olá! Gostaria de consultar a disponibilidade da ${unit.title} no Viverde Itaipava.`)}`}
+                    href={`https://wa.me/5521997862692?text=${encodeURIComponent(`Olá! Gostaria de consultar a disponibilidade da ${unit.title} no Viverde Itaipava.`)}`}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -266,11 +256,7 @@ export default function UnidadesPage() {
         </div>
       </section>
 
-      
-      <footer className="bg-[#1d211b] text-white py-12 px-4 sm:px-8 md:px-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60 uppercase tracking-widest border-t border-white/10">
-        <span>Viverde Itaipava Résidences</span>
-        <span>© 2026 Viverde · Todos os direitos reservados.</span>
-      </footer>
+      <Footer />
     </main>
   )
 }

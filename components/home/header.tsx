@@ -5,9 +5,16 @@ import { createPortal } from 'react-dom'
 import { ArrowUpRight, MapPin, Menu, Phone, X } from 'lucide-react'
 import { AnimatedThemeToggler } from '@/components/ui/animatedThemeToggler'
 
-export function Header() {
+export interface HeaderProps {
+  variant?: 'hero' | 'default'
+  className?: string
+}
+
+export function Header({ variant = 'hero', className = '' }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
+
+  const isHero = variant === 'hero'
 
   useEffect(() => {
     setMounted(true)
@@ -46,7 +53,7 @@ export function Header() {
               <div>
                 <div className="flex items-center justify-between pb-6 border-b border-white/10">
                   <a
-                    href="#inicio"
+                    href="/"
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="block w-36 h-auto select-none"
                   >
@@ -68,7 +75,7 @@ export function Header() {
 
                 <nav className="flex flex-col gap-5 pt-8 text-sm uppercase tracking-widest font-medium">
                   <a
-                    href="#conceito"
+                    href="/#conceito"
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="text-white/80 hover:text-[#B88A2D] transition-colors py-1 flex items-center justify-between"
                   >
@@ -76,7 +83,7 @@ export function Header() {
                     <span className="text-xs text-[#B88A2D]/80">01</span>
                   </a>
                   <a
-                    href="#galeria"
+                    href="/#galeria"
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="text-white/80 hover:text-[#B88A2D] transition-colors py-1 flex items-center justify-between"
                   >
@@ -84,7 +91,7 @@ export function Header() {
                     <span className="text-xs text-[#B88A2D]/80">02</span>
                   </a>
                   <a
-                    href="#empreendimento"
+                    href="/#empreendimento"
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="text-white/80 hover:text-[#B88A2D] transition-colors py-1 flex items-center justify-between"
                   >
@@ -92,7 +99,7 @@ export function Header() {
                     <span className="text-xs text-[#B88A2D]/80">03</span>
                   </a>
                   <a
-                    href="#filmes"
+                    href="/#filmes"
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="text-white/80 hover:text-[#B88A2D] transition-colors py-1 flex items-center justify-between"
                   >
@@ -144,26 +151,51 @@ export function Header() {
       : null
 
   return (
-    <header className="w-full flex items-center justify-between py-6 px-4 sm:px-8 md:px-12 relative z-20">
-      <a className="block w-40 sm:w-52 md:w-60 h-auto select-none" href="#inicio">
-        <img
-          src="/logo/logo_white.svg"
-          alt="Viverde Itaipava"
-          className="w-full h-auto max-h-12 sm:max-h-14 md:max-h-16 object-contain block"
-        />
+    <header
+      className={`w-full flex items-center justify-between py-6 px-4 sm:px-8 md:px-12 relative z-20 transition-colors ${
+        isHero
+          ? 'text-white'
+          : 'text-[#24271d] dark:text-[#f1efe8] border-b border-black/5 dark:border-white/5'
+      } ${className}`}
+    >
+      <a className="block w-40 sm:w-52 md:w-60 h-auto select-none" href="/">
+        {isHero ? (
+          <img
+            src="/logo/logo_white.svg"
+            alt="Viverde Itaipava"
+            className="w-full h-auto max-h-12 sm:max-h-14 md:max-h-16 object-contain block"
+          />
+        ) : (
+          <>
+            <img
+              src="/logo/logo_black.svg"
+              alt="Viverde Itaipava"
+              className="w-full h-auto max-h-12 sm:max-h-14 md:max-h-16 object-contain block dark:hidden"
+            />
+            <img
+              src="/logo/logo_white.svg"
+              alt="Viverde Itaipava"
+              className="w-full h-auto max-h-12 sm:max-h-14 md:max-h-16 object-contain hidden dark:block"
+            />
+          </>
+        )}
       </a>
 
-      <nav className="hidden lg:flex items-center gap-8 text-[11px] uppercase tracking-widest font-semibold text-white/90">
-        <a href="#conceito" className="hover:text-[#B88A2D] transition-colors">
+      <nav
+        className={`hidden lg:flex items-center gap-8 text-[11px] uppercase tracking-widest font-semibold ${
+          isHero ? 'text-white/90' : 'text-[#24271d]/80 dark:text-[#f1efe8]/80'
+        }`}
+      >
+        <a href="/#conceito" className="hover:text-[#B88A2D] transition-colors">
           Conceito
         </a>
-        <a href="#galeria" className="hover:text-[#B88A2D] transition-colors">
+        <a href="/#galeria" className="hover:text-[#B88A2D] transition-colors">
           Galeria
         </a>
-        <a href="#empreendimento" className="hover:text-[#B88A2D] transition-colors">
+        <a href="/#empreendimento" className="hover:text-[#B88A2D] transition-colors">
           Projeto
         </a>
-        <a href="#filmes" className="hover:text-[#B88A2D] transition-colors">
+        <a href="/#filmes" className="hover:text-[#B88A2D] transition-colors">
           Vídeos
         </a>
         <a href="/unidades" className="hover:text-[#B88A2D] transition-colors">
@@ -171,20 +203,38 @@ export function Header() {
         </a>
       </nav>
 
-      <div className="flex items-center gap-3 sm:gap-4 text-white">
+      <div
+        className={`flex items-center gap-3 sm:gap-4 ${
+          isHero ? 'text-white' : 'text-[#24271d] dark:text-[#f1efe8]'
+        }`}
+      >
         <a
           href="/contato"
-          className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white hover:text-black border border-white/20 text-white text-[11px] uppercase tracking-wider font-semibold transition-all duration-300"
+          className={`hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[11px] uppercase tracking-wider font-semibold transition-all duration-300 ${
+            isHero
+              ? 'bg-white/10 hover:bg-white hover:text-black border border-white/20 text-white'
+              : 'bg-black/5 dark:bg-white/10 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black border border-black/10 dark:border-white/20 text-[#24271d] dark:text-[#f1efe8]'
+          }`}
         >
           Fale com a gente <ArrowUpRight size={14} />
         </a>
 
-        <AnimatedThemeToggler className="border-0 text-white hover:bg-white/10" />
+        <AnimatedThemeToggler
+          className={`border-0 ${
+            isHero
+              ? 'text-white hover:bg-white/10'
+              : 'text-[#24271d] dark:text-[#f1efe8] hover:bg-black/5 dark:hover:bg-white/10'
+          }`}
+        />
 
         <button
           type="button"
           onClick={() => setIsMobileMenuOpen(true)}
-          className="lg:hidden p-2 text-white hover:text-[#B88A2D] transition-colors cursor-pointer rounded-full hover:bg-white/10"
+          className={`lg:hidden p-2 hover:text-[#B88A2D] transition-colors cursor-pointer rounded-full ${
+            isHero
+              ? 'text-white hover:bg-white/10'
+              : 'text-[#24271d] dark:text-[#f1efe8] hover:bg-black/5 dark:hover:bg-white/10'
+          }`}
           aria-label="Abrir menu"
         >
           <Menu size={26} />
