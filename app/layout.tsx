@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import { WhatsappWidget } from '@/components/ui/whatsappWidget'
+import { PageCurtainLoader } from '@/components/ui/pageCurtainLoader'
 import './globals.css'
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -49,6 +50,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen w-full bg-[#f4f2ed] text-[#24271d] dark:bg-[#161616] dark:text-[#f1efe8] font-sans antialiased flex flex-col items-center">
+        <PageCurtainLoader />
         <div id="page-container" className="w-full max-w-[1760px] mx-auto min-h-screen flex flex-col relative">
           {children}
           <WhatsappWidget />
