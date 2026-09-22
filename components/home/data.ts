@@ -1,31 +1,46 @@
-import type { FilmItem, GalleryItem, PlaceItem, ProjectCategory, ProjectImageItem } from './types'
+import type { FilmItem, GalleryItem, ProjectCategory, ProjectImageItem } from './types'
 
 export const galleryData: GalleryItem[] = [
-  { src: '/localizacao/location_01_vista_do_viverde_itaipava_residences.webp', alt: 'Vista panorâmica do Viverde entre montanhas', tag: 'Localização' },
-  { src: '/viverde/casa-04-suites/casa_04_suites_lazer.webp', alt: 'Lazer privativo com piscina e jardim', tag: 'Casa 04 Suítes' },
-  { src: '/localizacao/location_02_clima_montanha_e_verdes.webp', alt: 'Clima de montanha e verdes de Itaipava', tag: 'Natureza' },
-  { src: '/viverde/casa-03-suites/casa_03_suites_interior.webp', alt: 'Interior acolhedor da Casa 03 Suítes', tag: 'Casa 03 Suítes' },
-  { src: '/localizacao/location_03_cachoeira.webp', alt: 'Cachoeira cercada pela mata atlântica', tag: 'Ecoturismo' },
-  { src: '/viverde/geral/area_de_convivencia.webp', alt: 'Área de convivência e lazer integrado', tag: 'Condomínio' },
-]
-
-export const placesData: PlaceItem[] = [
-  { number: '01', title: 'Polo Gastronômico', text: 'Sabores autorais, bistrôs refinados e experiências que celebram a serra.', src: '/localizacao/location_09_restaurante.webp', alt: 'Polo gastronômico de Itaipava' },
-  { number: '02', title: 'Natureza & Cachoeiras', text: 'Trilhas, cachoeiras e montanhas para desacelerar em meio à Mata Atlântica.', src: '/localizacao/location_03_cachoeira.webp', alt: 'Cachoeira cercada pela mata' },
-  { number: '03', title: 'Produtos & Feiras da Serra', text: 'Conveniência, produtos orgânicos, queijos e delícias artesanais locais.', src: '/localizacao/location_08_produtos_locais.webp', alt: 'Produtos da serra e feiras' },
-  { number: '04', title: 'Ciclismo & Ecoturismo', text: 'Rotas de mountain bike e caminhadas emolduradas pelas montanhas.', src: '/localizacao/location_04_ciclismo_e_trilhas.webp', alt: 'Ciclismo e trilhas na serra' },
-  { number: '05', title: 'Mercados & Empórios', text: 'Empórios selecionados e mercados completos a minutos do condomínio.', src: '/localizacao/location_05_mercado.webp', alt: 'Mercado e empório de Itaipava' },
-  { number: '06', title: 'Adegas & Vinhos Finos', text: 'Degustação e rótulos exclusivos para apreciar no clima ameno da serra.', src: '/localizacao/location_06_adega.webp', alt: 'Adega e gastronomia local' },
-  { number: '07', title: 'Bares & Encontros', text: 'Ambientes acolhedores, drinques autorais e noites descontraídas.', src: '/localizacao/location_07_bar.webp', alt: 'Bares e vida noturna serrana' },
-  { number: '08', title: 'Clima de Montanha', text: 'Verdes exuberantes, ar puro e temperatura agradável em todas as estações.', src: '/localizacao/location_02_clima_montanha_e_verdes.webp', alt: 'Clima de montanha e verdes' },
-  { number: '09', title: 'Vista Privilegiada', text: 'Localização alta com vista panorâmica definitiva para a serra de Itaipava.', src: '/localizacao/location_01_vista_do_viverde_itaipava_residences.webp', alt: 'Vista panorâmica do Viverde Itaipava' },
+  { src: '/localizacao/location_01_vista_do_viverde_itaipava_residences.webp', alt: 'Vista panorâmica do Viverde entre montanhas', tag: 'Vista Panorâmica' },
+  { src: '/localizacao/location_02_clima_montanha_e_verdes.webp', alt: 'Clima de montanha e verdes de Itaipava', tag: 'Clima de Montanha' },
+  { src: '/localizacao/location_03_cachoeira.webp', alt: 'Cachoeiras cercadas pela Mata Atlântica', tag: 'Cachoeiras' },
+  { src: '/localizacao/location_04_ciclismo_e_trilhas.webp', alt: 'Ciclismo e trilhas na serra de Itaipava', tag: 'Trilhas & Esporte' },
+  { src: '/localizacao/location_05_mercado.webp', alt: 'Mercados e empórios selecionados', tag: 'Conveniência' },
+  { src: '/localizacao/location_06_adega.webp', alt: 'Adegas e cartas de vinhos exclusivas', tag: 'Adegas & Vinhos' },
+  { src: '/localizacao/location_07_bar.webp', alt: 'Bares acolhedores e drinques autorais', tag: 'Vida Noturna' },
+  { src: '/localizacao/location_08_produtos_locais.webp', alt: 'Produtos orgânicos e feiras da serra', tag: 'Produtos da Serra' },
+  { src: '/localizacao/location_09_restaurante.webp', alt: 'Polo gastronômico e bistrôs refinados', tag: 'Gastronomia' },
 ]
 
 export const filmsData: FilmItem[] = [
-  { title: 'O manifesto', label: 'A essência Viverde', image: '/utils/bg_hero_section.webp' },
-  { title: 'A arquitetura', label: 'Forma que acolhe', image: '/viverde/casa-04-suites/casa_04_suites_fachada.webp' },
-  { title: 'A paisagem', label: 'Serra, tempo e presença', image: '/localizacao/location_04_ciclismo_e_trilhas.webp' },
-  { title: 'O cotidiano', label: 'Viver é estar aqui', image: '/localizacao/location_07_bar.webp' },
+  {
+    title: 'O manifesto',
+    label: 'A essência Viverde',
+    image: '/utils/bg_hero_section.webp',
+    video: '/videos/01.mp4',
+    description: 'A harmonia entre arquitetura contemporânea, silêncio e o verde exuberante de Itaipava.',
+  },
+  {
+    title: 'A arquitetura',
+    label: 'Forma que acolhe',
+    image: '/viverde/casa-04-suites/casa_04_suites_fachada.webp',
+    video: '/videos/02.mp4',
+    description: 'Projetos autorais com madeira nobre, iluminação natural e integração absoluta.',
+  },
+  {
+    title: 'A paisagem',
+    label: 'Serra, tempo e presença',
+    image: '/localizacao/location_04_ciclismo_e_trilhas.webp',
+    video: '/videos/03.mp4',
+    description: 'Montanhas, trilhas, cachoeiras e o clima ameno que transformam qualquer rotina.',
+  },
+  {
+    title: 'O cotidiano',
+    label: 'Viver é estar aqui',
+    image: '/localizacao/location_07_bar.webp',
+    video: '/videos/04.mp4',
+    description: 'Gastronomia refinada, adegas selecionadas e momentos inesquecíveis em família.',
+  },
 ]
 
 export const projectCategoriesData: ProjectCategory[] = [

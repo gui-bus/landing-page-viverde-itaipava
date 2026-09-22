@@ -2,6 +2,7 @@ export interface GalleryItem {
   src: string
   alt: string
   tag?: string
+  video?: string
 }
 
 export interface PlaceItem {
@@ -16,6 +17,8 @@ export interface FilmItem {
   title: string
   label: string
   image: string
+  video: string
+  description?: string
 }
 
 export interface ProjectCategory {
