@@ -11,12 +11,12 @@ export function Footer() {
     <footer className="relative bg-[#121611] text-white py-16 sm:py-24 px-4 sm:px-8 md:px-12 border-t border-white/10 overflow-hidden">
       <div
         aria-hidden="true"
-        className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden z-0"
+        className="absolute -right-16 sm:-right-24 md:-right-32 -bottom-16 sm:-bottom-24 md:-bottom-32 w-[clamp(600px,90vw,1450px)] pointer-events-none select-none z-0 opacity-[0.035] flex justify-end items-end"
       >
         <img
           src="/logo/icon_white.svg"
           alt=""
-          className="w-[600px] sm:w-[850px] md:w-[1100px] lg:w-[1300px] max-w-none opacity-[0.04] object-contain translate-y-12 sm:translate-y-20"
+          className="w-full h-auto object-contain object-right-bottom"
         />
       </div>
 
@@ -49,7 +49,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="relative z-10 py-14 sm:py-18 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 border-b border-white/10">
+      <div className="relative z-10 py-14 sm:py-18 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
         <div className="lg:col-span-4 space-y-6">
           <a href="#inicio" className="block w-36 sm:w-44">
             <img
@@ -147,10 +147,10 @@ export function Footer() {
           <button
             type="button"
             onClick={scrollToTop}
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-white/20 text-white text-xs uppercase tracking-widest font-semibold hover:bg-white hover:text-black transition-all cursor-pointer group"
+            className="w-11 h-11 rounded-full border border-white/20 text-white flex items-center justify-center hover:bg-white hover:text-black transition-all cursor-pointer group"
+            aria-label="Voltar ao topo"
           >
-            <span>Topo</span>
-            <ArrowUp size={14} className="group-hover:-translate-y-0.5 transition-transform" />
+            <ArrowUp size={16} className="group-hover:-translate-y-0.5 transition-transform" />
           </button>
 
           <div className="text-left lg:text-right space-y-1">
@@ -164,7 +164,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="relative z-10 py-8 text-[11px] text-white/45 leading-relaxed font-light border-b border-white/5">
+      <div className="relative z-10 py-6 text-[11px] text-white/45 leading-relaxed font-light">
         <p>
           Todas as imagens, ilustrações, artes, plantas humanizadas referentes ao empreendimento apresentadas neste material publicitário são meramente ilustrativas e artísticas, podendo apresentar variações em relação ao produto final em razão do desenvolvimento dos projetos executivos. Memorial de incorporação prenotado sob o nº 31236 no cartório do 10º Ofício de Petrópolis. Projeto de construção aprovado na Prefeitura Municipal de Petrópolis sob o nº 26.531/23.
         </p>
