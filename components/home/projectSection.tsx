@@ -1,25 +1,82 @@
 'use client'
 
 import { useState } from 'react'
-import { ArrowUpRight, Plus } from 'lucide-react'
+import { ArrowUpRight, ChevronDown, ChevronUp, Plus } from 'lucide-react'
 import { projectCategoriesData, projectImagesData } from './data'
 
 export interface ProjectSectionProps {
   onSelectProject: (index: number, filteredList: typeof projectImagesData) => void
 }
 
+const INITIAL_COUNT = 6
+
+const bentoSpans = [
+  'col-span-12 lg:col-span-8 min-h-[340px] sm:min-h-[400px] lg:min-h-[460px]',
+  'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[320px] lg:min-h-[460px]',
+  'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px] lg:min-h-[320px]',
+  'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px] lg:min-h-[320px]',
+  'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px] lg:min-h-[320px]',
+  'col-span-12 min-h-[300px] sm:min-h-[380px] lg:min-h-[420px]',
+  'col-span-12 sm:col-span-6 lg:col-span-6 min-h-[280px] sm:min-h-[340px] lg:min-h-[380px]',
+  'col-span-12 sm:col-span-6 lg:col-span-6 min-h-[280px] sm:min-h-[340px] lg:min-h-[380px]',
+  'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px] lg:min-h-[320px]',
+  'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px] lg:min-h-[320px]',
+  'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px] lg:min-h-[320px]',
+  'col-span-12 lg:col-span-5 min-h-[280px] sm:min-h-[360px] lg:min-h-[440px]',
+  'col-span-12 lg:col-span-7 min-h-[280px] sm:min-h-[360px] lg:min-h-[440px]',
+  'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px] lg:min-h-[320px]',
+  'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px] lg:min-h-[320px]',
+  'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px] lg:min-h-[320px]',
+  'col-span-12 sm:col-span-6 lg:col-span-6 min-h-[280px] sm:min-h-[340px] lg:min-h-[380px]',
+  'col-span-12 sm:col-span-6 lg:col-span-6 min-h-[280px] sm:min-h-[340px] lg:min-h-[380px]',
+  'col-span-12 sm:col-span-6 lg:col-span-6 min-h-[280px] sm:min-h-[340px] lg:min-h-[380px]',
+  'col-span-12 sm:col-span-6 lg:col-span-6 min-h-[280px] sm:min-h-[340px] lg:min-h-[380px]',
+]
+
+function getBentoSpan(index: number, total: number): string {
+  if (total === 4) {
+    if (index === 0) return 'col-span-12 lg:col-span-8 min-h-[340px] sm:min-h-[400px] lg:min-h-[460px]'
+    if (index === 1) return 'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[320px] lg:min-h-[460px]'
+    return 'col-span-12 sm:col-span-6 lg:col-span-6 min-h-[280px] sm:min-h-[340px] lg:min-h-[380px]'
+  }
+  return bentoSpans[index % bentoSpans.length] || 'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px]'
+}
+
 export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
   const [activeCategory, setActiveCategory] = useState<string>('todos')
+  const [isExpanded, setIsExpanded] = useState<boolean>(false)
 
   const filteredProjects =
     activeCategory === 'todos'
       ? projectImagesData
       : projectImagesData.filter((p) => p.category === activeCategory)
 
+  const hasMore = filteredProjects.length > INITIAL_COUNT
+  const visibleProjects = isExpanded || !hasMore
+    ? filteredProjects
+    : filteredProjects.slice(0, INITIAL_COUNT)
+
+  const handleCategoryChange = (categoryId: string) => {
+    setActiveCategory(categoryId)
+    setIsExpanded(false)
+  }
+
+  const handleToggleExpand = () => {
+    if (isExpanded) {
+      setIsExpanded(false)
+      const el = document.getElementById('empreendimento')
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    } else {
+      setIsExpanded(true)
+    }
+  }
+
   return (
     <section
       id="empreendimento"
-      className="py-20 sm:py-28 md:py-36 px-4 sm:px-8 md:px-12 bg-black/[0.02] dark:bg-white/[0.02] border-y border-black/5 dark:border-white/5 text-[#24271d] dark:text-[#f1efe8] transition-colors"
+      className="py-20 sm:py-28 md:py-36 px-4 sm:px-8 md:px-12 bg-transparent text-[#24271d] dark:text-[#f1efe8] transition-colors"
     >
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
         <div>
@@ -27,7 +84,7 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
             O empreendimento
           </p>
           <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight">
-            Por dentro do <em className="italic text-[#b7a77f]">Viverde.</em>
+            Por dentro do <em className="italic text-[#B88A2D]">Viverde.</em>
           </h2>
         </div>
         <div className="max-w-md">
@@ -43,7 +100,6 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
         </div>
       </div>
 
-      {}
       <div className="flex flex-wrap gap-2 sm:gap-3 mb-10">
         {projectCategoriesData.map((cat) => {
           const isActive = activeCategory === cat.id
@@ -58,10 +114,10 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
               type="button"
               className={`px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-semibold transition-all cursor-pointer flex items-center gap-2 ${
                 isActive
-                  ? 'bg-[#30382c] text-white dark:bg-[#b7a77f] dark:text-[#161914] shadow-md'
+                  ? 'bg-[#30382c] text-white dark:bg-[#B88A2D] dark:text-[#161914] shadow-md'
                   : 'border border-black/15 dark:border-white/15 text-[#73786e] dark:text-[#a4aa9d] hover:border-black/40 hover:text-black dark:hover:text-white bg-transparent'
               }`}
-              onClick={() => setActiveCategory(cat.id)}
+              onClick={() => handleCategoryChange(cat.id)}
             >
               <span>{cat.label}</span>
               <span
@@ -76,46 +132,88 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
         })}
       </div>
 
-      {}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {filteredProjects.map((item, i) => (
-          <button
-            key={item.src + i}
-            type="button"
-            className="group relative aspect-4/3 rounded-lg overflow-hidden bg-black/20 cursor-pointer border border-black/5 dark:border-white/5 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 text-left"
-            onClick={() => onSelectProject(i, filteredProjects)}
-            aria-label={`Abrir ${item.alt} na galeria`}
-          >
-            <img
-              src={item.src}
-              alt={item.alt}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10" />
+      <div className="grid grid-cols-12 gap-4 sm:gap-6">
+        {visibleProjects.map((item, i) => {
+          const originalIndex = filteredProjects.findIndex((p) => p.src === item.src)
+          const isLarge = i === 0 || i === 5
+          const isAppearing = i >= INITIAL_COUNT
 
-            <span className="absolute top-3 right-3 z-20 opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 backdrop-blur-sm text-white px-2.5 py-1 rounded text-[10px] uppercase tracking-wider flex items-center gap-1 font-semibold">
-              <Plus size={12} /> Zoom
-            </span>
+          return (
+            <button
+              key={item.src + i}
+              type="button"
+              style={
+                isAppearing
+                  ? {
+                      animationDelay: `${Math.min((i - INITIAL_COUNT) * 45, 400)}ms`,
+                    }
+                  : undefined
+              }
+              className={`group relative overflow-hidden rounded-xl sm:rounded-2xl bg-black/10 cursor-pointer text-left shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 ${
+                getBentoSpan(i, visibleProjects.length)
+              } ${
+                isAppearing
+                  ? 'animate-[fadeInUp_0.5s_cubic-bezier(0.16,1,0.3,1)_both]'
+                  : ''
+              }`}
+              onClick={() => onSelectProject(originalIndex >= 0 ? originalIndex : i, filteredProjects)}
+              aria-label={`Abrir ${item.title}`}
+            >
+              <img
+                src={item.src}
+                alt={item.alt}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10 transition-opacity duration-300 group-hover:from-black/95 group-hover:via-black/45" />
 
-            <div className="absolute bottom-4 left-4 right-4 z-20 text-white">
-              <div className="flex items-center justify-between mb-1">
-                <span className="text-[10px] uppercase tracking-widest text-[#b7a77f] font-semibold">
+              <div className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between">
+                <span className="text-[10px] uppercase tracking-widest text-[#d8cca8] font-semibold bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
                   {item.tag}
                 </span>
-                <span className="text-[10px] text-white/60 font-semibold">
-                  {String(i + 1).padStart(2, '0')}
+                <span className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center group-hover:bg-[#B88A2D] group-hover:text-[#161914] transition-all group-hover:scale-110 shrink-0">
+                  <Plus size={15} />
                 </span>
               </div>
-              <h3 className="font-heading text-base sm:text-lg font-medium text-white mb-1 leading-snug">
-                {item.title}
-              </h3>
-              <p className="text-xs text-white/80 line-clamp-2 font-light leading-relaxed">
-                {item.text}
-              </p>
-            </div>
-          </button>
-        ))}
+
+              <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 z-20 text-white">
+                <span className="text-[11px] text-white/60 font-semibold mb-1 block">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <h3
+                  className={`font-heading font-medium text-white mb-1 leading-snug ${
+                    isLarge ? 'text-lg sm:text-2xl md:text-3xl max-w-xl' : 'text-base sm:text-lg md:text-xl'
+                  }`}
+                >
+                  {item.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-white/80 font-light leading-relaxed line-clamp-2 max-w-xl">
+                  {item.text}
+                </p>
+              </div>
+            </button>
+          )
+        })}
       </div>
+
+      {hasMore && (
+        <div className="mt-12 sm:mt-16 flex flex-col items-center justify-center gap-3">
+          <button
+            type="button"
+            onClick={handleToggleExpand}
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#30382c] dark:bg-[#B88A2D] text-white dark:text-[#161914] text-xs uppercase tracking-widest font-semibold hover:bg-[#24271d] dark:hover:bg-[#c7b88d] transition-all duration-300 shadow-md hover:shadow-xl hover:scale-[1.02] cursor-pointer"
+          >
+            <span>
+              {isExpanded
+                ? 'Mostrar menos fotos'
+                : `Ver mais fotos (${filteredProjects.length - INITIAL_COUNT})`}
+            </span>
+            {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          </button>
+          <p className="text-xs text-[#73786e] dark:text-[#a4aa9d] font-light">
+            Exibindo {visibleProjects.length} de {filteredProjects.length} fotos do empreendimento
+          </p>
+        </div>
+      )}
     </section>
   )
 }
