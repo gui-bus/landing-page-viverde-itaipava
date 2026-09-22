@@ -110,11 +110,11 @@ export function WhatsappWidget() {
               <div className="flex items-center justify-between px-2.5 py-2 border-b border-black/5 dark:border-white/10 mb-2.5">
                 <div className="flex items-center gap-2">
                   <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#233922] opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#233922]" />
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#161914] opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#161914]" />
                   </span>
                   <div>
-                    <p className="text-[10px] font-bold text-[#233922] dark:text-[#8ea98c] uppercase tracking-wider">
+                    <p className="text-[10px] font-bold text-[#161914] dark:text-[#8ea98c] uppercase tracking-wider">
                       Atendimento Viverde
                     </p>
                     <p className="text-xs font-bold text-[#24271d] dark:text-white">
@@ -133,7 +133,7 @@ export function WhatsappWidget() {
                     setIsOpen(false)
                     setIsHovered(false)
                   }}
-                  className="p-1 rounded-lg text-[#233922]/60 hover:text-[#233922] dark:text-white/60 dark:hover:text-white transition-colors cursor-pointer"
+                  className="p-1 rounded-lg text-[#161914]/60 hover:text-[#161914] dark:text-white/60 dark:hover:text-white transition-colors cursor-pointer"
                   aria-label="Fechar popup do WhatsApp"
                 >
                   <X size={14} />
@@ -148,10 +148,10 @@ export function WhatsappWidget() {
                       key={option.id}
                       type="button"
                       onClick={() => handleSelectOption(option.message)}
-                      className="w-full p-2.5 rounded-xl hover:bg-[#233922]/5 dark:hover:bg-white/5 transition-all flex items-center justify-between text-left group/item cursor-pointer"
+                      className="w-full p-2.5 rounded-xl hover:bg-[#161914]/5 dark:hover:bg-white/5 transition-all flex items-center justify-between text-left group/item cursor-pointer"
                     >
                       <div className="flex items-center gap-3 min-w-0">
-                        <div className="p-2 rounded-lg bg-[#233922]/10 text-[#233922] dark:bg-[#233922]/30 dark:text-[#8ea98c] shrink-0">
+                        <div className="p-2 rounded-lg bg-[#161914]/10 text-[#161914] dark:bg-[#161914]/30 dark:text-[#8ea98c] shrink-0">
                           <IconComponent size={16} />
                         </div>
                         <span className="text-xs font-semibold text-[#24271d] dark:text-white block">
@@ -161,7 +161,7 @@ export function WhatsappWidget() {
 
                       <ArrowUpRight
                         size={14}
-                        className="text-[#233922]/50 group-hover/item:text-[#233922] dark:text-white/40 dark:group-hover/item:text-white group-hover/item:translate-x-0.5 group-hover/item:-translate-y-0.5 transition-transform shrink-0 ml-1.5"
+                        className="text-[#161914]/50 group-hover/item:text-[#161914] dark:text-white/40 dark:group-hover/item:text-white group-hover/item:translate-x-0.5 group-hover/item:-translate-y-0.5 transition-transform shrink-0 ml-1.5"
                       />
                     </button>
                   )
