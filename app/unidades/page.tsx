@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ArrowLeft, ArrowUpRight, BedDouble, Maximize2, ShieldCheck, Sparkles, Trees, ChevronLeft, ChevronRight, X } from 'lucide-react'
+import { ArrowLeft, ArrowUpRight, BedDouble, Maximize2, ShieldCheck, Trees, ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { AnimatedThemeToggler } from '@/components/ui/animatedThemeToggler'
 
 type PhotoItem = { label: string; src: string; alt: string }
@@ -87,7 +87,7 @@ export default function UnidadesPage() {
 
   return (
     <main className="w-full bg-[#f4f2ed] dark:bg-[#161914] text-[#24271d] dark:text-[#f1efe8] transition-colors min-h-screen">
-      {}
+      
       {lightboxUnit && currentUnitForLightbox && currentPhotoForLightbox && (
         <div
           className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/95 p-4 sm:p-8 backdrop-blur-md"
@@ -147,7 +147,7 @@ export default function UnidadesPage() {
         </div>
       )}
 
-      {}
+      
       <header className="w-full flex items-center justify-between py-6 px-4 sm:px-8 md:px-12 border-b border-black/5 dark:border-white/5">
         <a className="block w-28 sm:w-36 h-auto" href="/">
           <img src="/logo/logo_black.svg" alt="Viverde" className="w-full h-auto max-h-9 object-contain block dark:hidden" />
@@ -155,27 +155,27 @@ export default function UnidadesPage() {
         </a>
         <div className="flex items-center gap-4">
           <AnimatedThemeToggler />
-          <a className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold hover:text-[#b7a77f] transition-colors" href="/">
+          <a className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold hover:text-[#B88A2D] transition-colors" href="/">
             <ArrowLeft size={14} /> Voltar ao início
           </a>
         </div>
       </header>
 
-      {}
+      
       <section className="py-16 sm:py-24 px-4 sm:px-8 md:px-12 max-w-4xl">
         <p className="text-[#849181] dark:text-[#a4aa9d] text-xs uppercase tracking-[0.2em] font-semibold mb-3">
           Disponibilidade & Tipologias
         </p>
         <h1 className="font-heading text-4xl sm:text-6xl md:text-7xl font-normal leading-[0.98] tracking-tight">
           Encontre o seu<br />
-          <em className="italic text-[#b7a77f]">jeito de viver.</em>
+          <em className="italic text-[#B88A2D]">jeito de viver.</em>
         </h1>
         <p className="text-base sm:text-lg text-[#73786e] dark:text-[#a4aa9d] leading-relaxed mt-6 font-light">
           Conheça as casas autorais e a estrutura completa do Viverde Itaipava Résidences. Navegue pelas fotos de cada ambiente e escolha o seu espaço.
         </p>
       </section>
 
-      {}
+      
       <section className="py-12 sm:py-20 px-4 sm:px-8 md:px-12 bg-black/[0.02] dark:bg-white/[0.02] border-t border-black/5 dark:border-white/5">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {unitsData.map((unit, index) => {
@@ -187,7 +187,7 @@ export default function UnidadesPage() {
                 key={unit.id}
                 className="flex flex-col rounded-xl overflow-hidden border border-black/10 dark:border-white/10 bg-white dark:bg-[#1d211b] shadow-sm hover:shadow-xl transition-all duration-300"
               >
-                {}
+                
                 <div
                   className="relative aspect-4/3 overflow-hidden bg-black/10 cursor-pointer group"
                   onClick={() => setLightboxUnit({ unitId: unit.id, photoIdx: currentPhotoIdx })}
@@ -208,7 +208,7 @@ export default function UnidadesPage() {
 
                 <div className="p-6 flex flex-col flex-1 justify-between">
                   <div>
-                    {}
+                    
                     <div className="flex flex-wrap gap-1.5 mb-5">
                       {unit.photos.map((p, pIdx) => (
                         <button
@@ -216,7 +216,7 @@ export default function UnidadesPage() {
                           type="button"
                           className={`px-3 py-1 rounded-full text-[11px] uppercase tracking-wider font-medium transition-all cursor-pointer ${
                             currentPhotoIdx === pIdx
-                              ? 'bg-[#30382c] text-white dark:bg-[#b7a77f] dark:text-[#161914] font-semibold'
+                              ? 'bg-[#30382c] text-white dark:bg-[#B88A2D] dark:text-[#161914] font-semibold'
                               : 'border border-black/10 dark:border-white/10 text-[#73786e] dark:text-[#a4aa9d] hover:border-black/30'
                           }`}
                           onClick={() => setPhotoForUnit(unit.id, pIdx)}
@@ -233,7 +233,7 @@ export default function UnidadesPage() {
                       {unit.title}
                     </h2>
 
-                    <div className="flex items-center gap-2 text-xs font-semibold text-[#b7a77f] mb-4">
+                    <div className="flex items-center gap-2 text-xs font-semibold text-[#B88A2D] mb-4">
                       <BedDouble size={16} /> {unit.area} <Maximize2 size={16} />
                     </div>
 
@@ -244,14 +244,14 @@ export default function UnidadesPage() {
                     <div className="space-y-1.5 mb-6 pt-4 border-t border-black/5 dark:border-white/5">
                       {unit.features.map((feat) => (
                         <div key={feat} className="text-xs text-[#73786e] dark:text-[#a4aa9d] flex items-center gap-2">
-                          <span className="text-[#b7a77f]">✓</span> {feat}
+                          <span className="text-[#B88A2D]">✓</span> {feat}
                         </div>
                       ))}
                     </div>
                   </div>
 
                   <a
-                    className="w-full py-3.5 px-5 bg-[#30382c] dark:bg-[#b7a77f] text-white dark:text-[#161914] text-xs uppercase tracking-widest font-semibold flex items-center justify-between rounded-lg hover:opacity-95 transition-opacity"
+                    className="w-full py-3.5 px-5 bg-[#30382c] dark:bg-[#B88A2D] text-white dark:text-[#161914] text-xs uppercase tracking-widest font-semibold flex items-center justify-between rounded-lg hover:opacity-95 transition-opacity"
                     href={`https://wa.me/5524999999999?text=${encodeURIComponent(`Olá! Gostaria de consultar a disponibilidade da ${unit.title} no Viverde Itaipava.`)}`}
                     target="_blank"
                     rel="noreferrer"
@@ -266,7 +266,7 @@ export default function UnidadesPage() {
         </div>
       </section>
 
-      {}
+      
       <footer className="bg-[#1d211b] text-white py-12 px-4 sm:px-8 md:px-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60 uppercase tracking-widest border-t border-white/10">
         <span>Viverde Itaipava Résidences</span>
         <span>© 2026 Viverde · Todos os direitos reservados.</span>
