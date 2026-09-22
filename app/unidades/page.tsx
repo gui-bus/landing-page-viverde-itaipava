@@ -216,7 +216,7 @@ export default function UnidadesPage() {
                           type="button"
                           className={`px-3 py-1 rounded-full text-[11px] uppercase tracking-wider font-medium transition-all cursor-pointer ${
                             currentPhotoIdx === pIdx
-                              ? 'bg-[#30382c] text-white dark:bg-[#B88A2D] dark:text-[#161914] font-semibold'
+                              ? 'bg-[#161914] text-white dark:bg-[#B88A2D] dark:text-[#161914] font-semibold'
                               : 'border border-black/10 dark:border-white/10 text-[#73786e] dark:text-[#a4aa9d] hover:border-black/30'
                           }`}
                           onClick={() => setPhotoForUnit(unit.id, pIdx)}
@@ -251,7 +251,7 @@ export default function UnidadesPage() {
                   </div>
 
                   <a
-                    className="w-full py-3.5 px-5 bg-[#30382c] dark:bg-[#B88A2D] text-white dark:text-[#161914] text-xs uppercase tracking-widest font-semibold flex items-center justify-between rounded-lg hover:opacity-95 transition-opacity"
+                    className="w-full py-3.5 px-5 bg-[#161914] dark:bg-[#B88A2D] text-white dark:text-[#161914] text-xs uppercase tracking-widest font-semibold flex items-center justify-between rounded-lg hover:opacity-95 transition-opacity"
                     href={`https://wa.me/5524999999999?text=${encodeURIComponent(`Olá! Gostaria de consultar a disponibilidade da ${unit.title} no Viverde Itaipava.`)}`}
                     target="_blank"
                     rel="noreferrer"

@@ -135,7 +135,7 @@ export default function ContatoPage() {
 
                 <button
                   type="submit"
-                  className="w-full sm:w-auto px-8 py-3.5 bg-[#30382c] dark:bg-[#B88A2D] text-white dark:text-[#161914] text-xs uppercase tracking-widest font-semibold rounded-lg hover:opacity-95 transition-opacity flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full sm:w-auto px-8 py-3.5 bg-[#161914] dark:bg-[#B88A2D] text-white dark:text-[#161914] text-xs uppercase tracking-widest font-semibold rounded-lg hover:opacity-95 transition-opacity flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <span>Enviar mensagem</span>
                   <ArrowUpRight size={16} />
