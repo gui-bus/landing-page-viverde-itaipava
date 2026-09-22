@@ -46,7 +46,7 @@ export function Header({ variant = 'hero', className = '' }: HeaderProps) {
             />
 
             <div
-              className={`fixed top-0 right-0 h-full w-[85vw] max-w-sm bg-[#121611] text-white z-[9999] p-6 sm:p-8 flex flex-col justify-between shadow-2xl border-l border-white/10 transition-transform duration-300 ease-out ${
+              className={`fixed top-0 right-0 h-full w-[85vw] max-w-sm bg-[#161616] text-white z-[9999] p-6 sm:p-8 flex flex-col justify-between shadow-2xl border-l border-white/10 transition-transform duration-300 ease-out ${
                 isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
               }`}
             >
@@ -121,7 +121,7 @@ export function Header({ variant = 'hero', className = '' }: HeaderProps) {
                 <a
                   href="/contato"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-full py-3.5 rounded-full bg-[#B88A2D] hover:bg-[#c7b88d] text-[#161914] text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 transition-all shadow-lg"
+                  className="w-full py-3.5 rounded-full bg-[#B88A2D] hover:bg-[#c7b88d] text-[#161616] text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 transition-all shadow-lg"
                 >
                   Fale com a gente <ArrowUpRight size={14} />
                 </a>

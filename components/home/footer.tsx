@@ -8,7 +8,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="relative bg-[#121611] text-white py-16 sm:py-24 px-4 sm:px-8 md:px-12 border-t border-white/10 overflow-hidden">
+    <footer className="relative bg-[#161616] text-white py-16 sm:py-24 px-4 sm:px-8 md:px-12 border-t border-white/10 overflow-hidden">
       <div
         aria-hidden="true"
         className="absolute -right-16 sm:-right-24 md:-right-32 -bottom-16 sm:-bottom-24 md:-bottom-32 w-[clamp(600px,90vw,1450px)] pointer-events-none select-none z-0 opacity-[0.035] flex justify-end items-end"
@@ -35,7 +35,7 @@ export function Footer() {
               href="https://wa.me/5521997862692?text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Viverde%20Itaipava."
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#B88A2D] hover:bg-[#c7b88d] text-[#161914] text-xs uppercase tracking-widest font-semibold transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#B88A2D] hover:bg-[#c7b88d] text-[#161616] text-xs uppercase tracking-widest font-semibold transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105"
             >
               Falar no WhatsApp <ArrowUpRight size={15} />
             </a>

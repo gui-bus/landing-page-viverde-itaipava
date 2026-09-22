@@ -20,7 +20,7 @@ export const viewport: Viewport = {
   colorScheme: 'light dark',
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#f4f2ed' },
-    { media: '(prefers-color-scheme: dark)', color: '#161914' },
+    { media: '(prefers-color-scheme: dark)', color: '#161616' },
   ],
 }
 
@@ -48,7 +48,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen w-full bg-[#f4f2ed] text-[#24271d] dark:bg-[#161914] dark:text-[#f1efe8] font-sans antialiased flex flex-col items-center">
+      <body className="min-h-screen w-full bg-[#f4f2ed] text-[#24271d] dark:bg-[#161616] dark:text-[#f1efe8] font-sans antialiased flex flex-col items-center">
         <div id="page-container" className="w-full max-w-[1760px] mx-auto min-h-screen flex flex-col relative">
           {children}
           <WhatsappWidget />

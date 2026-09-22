@@ -75,7 +75,7 @@ export default function Page() {
   }, [activeIndex])
 
   return (
-    <main className="w-full bg-[#f4f2ed] dark:bg-[#161914] text-[#24271d] dark:text-[#f1efe8] transition-colors">
+    <main className="w-full bg-[#f4f2ed] dark:bg-[#161616] text-[#24271d] dark:text-[#f1efe8] transition-colors">
       {activeIndex !== null && (
         <LightboxModal
           items={activeGalleryItems}
