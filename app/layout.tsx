@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
+import { WhatsappWidget } from '@/components/ui/whatsappWidget'
 import './globals.css'
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -67,6 +68,7 @@ export default function RootLayout({
       <body className="min-h-screen w-full bg-[#f4f2ed] text-[#24271d] dark:bg-[#161914] dark:text-[#f1efe8] font-sans antialiased flex flex-col items-center">
         <div id="page-container" className="w-full max-w-[1760px] mx-auto min-h-screen flex flex-col relative">
           {children}
+          <WhatsappWidget />
         </div>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
