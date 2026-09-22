@@ -48,41 +48,41 @@ export default function ContatoPage() {
         </section>
 
         <section className="relative z-10 pb-16 sm:pb-28 px-4 sm:px-8 md:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <div className="lg:col-span-5">
-            <p className="text-[#849181] dark:text-[#a4aa9d] text-xs uppercase tracking-[0.2em] font-semibold mb-2">
-              Atendimento exclusivo
-            </p>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight mb-4">
-              Vamos conversar sobre o seu <em className="italic text-[#B88A2D]">lugar.</em>
-            </h2>
-            <p className="text-sm sm:text-base text-[#73786e] dark:text-[#a4aa9d] leading-relaxed mb-8 font-light">
-              Nossa equipe está pronta para apresentar cada detalhe do projeto, agendar uma visita guiada ao stand e encontrar a casa que combina com o seu ritmo.
-            </p>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <div className="lg:col-span-5">
+              <p className="text-[#849181] dark:text-[#a4aa9d] text-xs uppercase tracking-[0.2em] font-semibold mb-2">
+                Atendimento exclusivo
+              </p>
+              <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight mb-4">
+                Vamos conversar sobre o seu <em className="italic text-[#B88A2D]">lugar.</em>
+              </h2>
+              <p className="text-sm sm:text-base text-[#73786e] dark:text-[#a4aa9d] leading-relaxed mb-8 font-light">
+                Nossa equipe está pronta para apresentar cada detalhe do projeto, agendar uma visita guiada ao stand e encontrar a casa que combina com o seu ritmo.
+              </p>
 
-            <div className="space-y-4 pt-8 border-t border-black/10 dark:border-white/10">
-              <div className="flex items-start gap-3.5 text-sm text-[#24271d] dark:text-[#f1efe8]">
-                <MapPin size={18} className="text-[#B88A2D] shrink-0 mt-0.5" />
-                <span>
-                  Rua Neuza Goulart Brizola, 2005<br />
-                  Itaipava · Petrópolis · RJ
-                </span>
-              </div>
-              <div className="flex items-center gap-3.5 text-sm">
-                <Phone size={18} className="text-[#B88A2D] shrink-0" />
-                <a
-                  href="https://wa.me/5521997862692"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-[#24271d] dark:text-[#f1efe8] hover:text-[#B88A2D] transition-colors font-medium"
-                >
-                  (21) 99786-2692
-                </a>
+              <div className="space-y-4 pt-8 border-t border-black/10 dark:border-white/10">
+                <div className="flex items-start gap-3.5 text-sm text-[#24271d] dark:text-[#f1efe8]">
+                  <MapPin size={18} className="text-[#B88A2D] shrink-0 mt-0.5" />
+                  <span>
+                    Rua Neuza Goulart Brizola, 2005<br />
+                    Itaipava · Petrópolis · RJ
+                  </span>
+                </div>
+                <div className="flex items-center gap-3.5 text-sm">
+                  <Phone size={18} className="text-[#B88A2D] shrink-0" />
+                  <a
+                    href="https://wa.me/5521997862692"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-[#24271d] dark:text-[#f1efe8] hover:text-[#B88A2D] transition-colors font-medium"
+                  >
+                    (21) 99786-2692
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="lg:col-span-7">
+            <div className="lg:col-span-7">
             {submitted ? (
               <div className="py-6 sm:py-8 space-y-4">
                 <span className="w-12 h-12 rounded-full bg-[#B88A2D]/15 text-[#B88A2D] flex items-center justify-center mb-6">
@@ -164,9 +164,9 @@ export default function ContatoPage() {
                 </div>
               </form>
             )}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
       </div>
 
       <Footer />

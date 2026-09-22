@@ -2,45 +2,15 @@
 
 import { useState } from 'react'
 import { ArrowUpRight, ChevronDown, ChevronUp } from 'lucide-react'
+import { motion, AnimatePresence } from 'motion/react'
 import { projectCategoriesData, projectImagesData } from './data'
+import type { ProjectImageItem } from './types'
 
 export interface ProjectSectionProps {
-  onSelectProject: (index: number, filteredList: typeof projectImagesData) => void
+  onSelectProject: (index: number, filteredList: ProjectImageItem[]) => void
 }
 
 const INITIAL_COUNT = 6
-
-const bentoSpans = [
-  'col-span-12 lg:col-span-8 min-h-[340px] sm:min-h-[400px] lg:min-h-[460px]',
-  'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[320px] lg:min-h-[460px]',
-  'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px] lg:min-h-[320px]',
-  'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px] lg:min-h-[320px]',
-  'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px] lg:min-h-[320px]',
-  'col-span-12 min-h-[300px] sm:min-h-[380px] lg:min-h-[420px]',
-  'col-span-12 sm:col-span-6 lg:col-span-6 min-h-[280px] sm:min-h-[340px] lg:min-h-[380px]',
-  'col-span-12 sm:col-span-6 lg:col-span-6 min-h-[280px] sm:min-h-[340px] lg:min-h-[380px]',
-  'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px] lg:min-h-[320px]',
-  'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px] lg:min-h-[320px]',
-  'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px] lg:min-h-[320px]',
-  'col-span-12 lg:col-span-5 min-h-[280px] sm:min-h-[360px] lg:min-h-[440px]',
-  'col-span-12 lg:col-span-7 min-h-[280px] sm:min-h-[360px] lg:min-h-[440px]',
-  'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px] lg:min-h-[320px]',
-  'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px] lg:min-h-[320px]',
-  'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px] lg:min-h-[320px]',
-  'col-span-12 sm:col-span-6 lg:col-span-6 min-h-[280px] sm:min-h-[340px] lg:min-h-[380px]',
-  'col-span-12 sm:col-span-6 lg:col-span-6 min-h-[280px] sm:min-h-[340px] lg:min-h-[380px]',
-  'col-span-12 sm:col-span-6 lg:col-span-6 min-h-[280px] sm:min-h-[340px] lg:min-h-[380px]',
-  'col-span-12 sm:col-span-6 lg:col-span-6 min-h-[280px] sm:min-h-[340px] lg:min-h-[380px]',
-]
-
-function getBentoSpan(index: number, total: number): string {
-  if (total === 4) {
-    if (index === 0) return 'col-span-12 lg:col-span-8 min-h-[340px] sm:min-h-[400px] lg:min-h-[460px]'
-    if (index === 1) return 'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[320px] lg:min-h-[460px]'
-    return 'col-span-12 sm:col-span-6 lg:col-span-6 min-h-[280px] sm:min-h-[340px] lg:min-h-[380px]'
-  }
-  return bentoSpans[index % bentoSpans.length] || 'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px]'
-}
 
 export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
   const [activeCategory, setActiveCategory] = useState<string>('todos')
@@ -49,24 +19,43 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
   const filteredProjects =
     activeCategory === 'todos'
       ? projectImagesData
-      : projectImagesData.filter((p) => p.category === activeCategory)
+      : projectImagesData.filter((item) => item.category === activeCategory)
 
-  const hasMore = filteredProjects.length > INITIAL_COUNT
-  const visibleProjects = isExpanded || !hasMore
+  const visibleProjects = isExpanded
     ? filteredProjects
     : filteredProjects.slice(0, INITIAL_COUNT)
 
-  const handleCategoryChange = (categoryId: string) => {
-    setActiveCategory(categoryId)
+  const hasMore = filteredProjects.length > INITIAL_COUNT
+
+  const getBentoSpan = (index: number, total: number) => {
+    if (total === 1) return 'col-span-12 min-h-[380px] sm:min-h-[480px]'
+    if (total === 2) return 'col-span-12 sm:col-span-6 min-h-[320px] sm:min-h-[420px]'
+
+    const pattern = [
+      'col-span-12 lg:col-span-8 min-h-[340px] sm:min-h-[420px] lg:min-h-[460px]',
+      'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[320px] lg:min-h-[460px]',
+      'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px]',
+      'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px]',
+      'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px]',
+      'col-span-12 lg:col-span-8 min-h-[340px] sm:min-h-[420px] lg:min-h-[460px]',
+      'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px]',
+      'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px]',
+      'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px]',
+    ]
+    return pattern[index % pattern.length]
+  }
+
+  const handleCategoryChange = (catId: string) => {
+    setActiveCategory(catId)
     setIsExpanded(false)
   }
 
   const handleToggleExpand = () => {
     if (isExpanded) {
       setIsExpanded(false)
-      const el = document.getElementById('empreendimento')
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      const sectionEl = document.getElementById('empreendimento')
+      if (sectionEl) {
+        sectionEl.scrollIntoView({ behavior: 'smooth' })
       }
     } else {
       setIsExpanded(true)
@@ -133,60 +122,54 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
       </div>
 
       <div className="grid grid-cols-12 gap-4 sm:gap-6">
-        {visibleProjects.map((item, i) => {
-          const originalIndex = filteredProjects.findIndex((p) => p.src === item.src)
-          const isLarge = i === 0 || i === 5
-          const isAppearing = i >= INITIAL_COUNT
+        <AnimatePresence mode="wait">
+          {visibleProjects.map((item, i) => {
+            const originalIndex = filteredProjects.findIndex((p) => p.src === item.src)
+            const isLarge = i === 0 || i === 5
 
-          return (
-            <button
-              key={item.src + i}
-              type="button"
-              style={
-                isAppearing
-                  ? {
-                      animationDelay: `${Math.min((i - INITIAL_COUNT) * 45, 400)}ms`,
-                    }
-                  : undefined
-              }
-              className={`group relative overflow-hidden rounded-xs bg-black/10 cursor-pointer text-left shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 ${
-                getBentoSpan(i, visibleProjects.length)
-              } ${
-                isAppearing
-                  ? 'animate-[fadeInUp_0.5s_cubic-bezier(0.16,1,0.3,1)_both]'
-                  : ''
-              }`}
-              onClick={() => onSelectProject(originalIndex >= 0 ? originalIndex : i, filteredProjects)}
-              aria-label={`Abrir ${item.title}`}
-            >
-              <img
-                src={item.src}
-                alt={item.alt}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10 transition-opacity duration-300 group-hover:from-black/95 group-hover:via-black/45" />
+            return (
+              <motion.button
+                key={item.src + activeCategory}
+                type="button"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className={`group relative overflow-hidden rounded-xs bg-black/10 cursor-pointer text-left shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 ${
+                  getBentoSpan(i, visibleProjects.length)
+                }`}
+                onClick={() => onSelectProject(originalIndex >= 0 ? originalIndex : i, filteredProjects)}
+                aria-label={`Abrir ${item.title}`}
+              >
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10 transition-opacity duration-300 group-hover:from-black/95 group-hover:via-black/45" />
 
-              <div className="absolute top-4 left-4 z-20">
-                <span className="text-[10px] uppercase tracking-widest text-white font-semibold bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/15 shadow-sm">
-                  {item.tag}
-                </span>
-              </div>
+                <div className="absolute top-4 left-4 z-20">
+                  <span className="text-[10px] uppercase tracking-widest text-white font-semibold bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/15 shadow-sm">
+                    {item.tag}
+                  </span>
+                </div>
 
-              <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 z-20 text-white">
-                <h3
-                  className={`font-heading font-medium text-white mb-1 leading-snug ${
-                    isLarge ? 'text-lg sm:text-2xl md:text-3xl max-w-xl' : 'text-base sm:text-lg md:text-xl'
-                  }`}
-                >
-                  {item.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-white/80 font-light leading-relaxed line-clamp-2 max-w-xl">
-                  {item.text}
-                </p>
-              </div>
-            </button>
-          )
-        })}
+                <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 z-20 text-white">
+                  <h3
+                    className={`font-heading font-medium text-white mb-1 leading-snug ${
+                      isLarge ? 'text-lg sm:text-2xl md:text-3xl max-w-xl' : 'text-base sm:text-lg md:text-xl'
+                    }`}
+                  >
+                    {item.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-white/80 font-light leading-relaxed line-clamp-2 max-w-xl">
+                    {item.text}
+                  </p>
+                </div>
+              </motion.button>
+            )
+          })}
+        </AnimatePresence>
       </div>
 
       {hasMore && (

@@ -1,6 +1,7 @@
 'use client'
 
 import { ArrowDown } from 'lucide-react'
+import { motion } from 'motion/react'
 import { Header } from './header'
 
 export function HeroSection() {
@@ -11,7 +12,10 @@ export function HeroSection() {
     >
       <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/30 z-0 pointer-events-none" />
 
-      <div
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         aria-hidden="true"
         className="absolute right-0 bottom-0 sm:bottom-1 md:bottom-2 w-[clamp(240px,44vw,620px)] pointer-events-none select-none z-10 opacity-100 flex justify-end"
       >
@@ -20,11 +24,16 @@ export function HeroSection() {
           alt=""
           className="w-full h-auto object-contain object-right"
         />
-      </div>
+      </motion.div>
 
       <Header />
 
-      <div className="relative z-10 py-20 pb-44! px-4 sm:px-8 md:px-12 flex flex-col items-center text-center max-w-3xl mx-auto">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-10 py-20 pb-44! px-4 sm:px-8 md:px-12 flex flex-col items-center text-center max-w-3xl mx-auto"
+      >
         <p className="text-white/80 text-xs sm:text-sm uppercase tracking-widest mb-3 font-semibold">
           Um novo ritmo para a vida
         </p>
@@ -49,7 +58,7 @@ export function HeroSection() {
             40 casas autorais<br />em condomínio fechado
           </span>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

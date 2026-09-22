@@ -180,29 +180,29 @@ export default function UnidadesPage() {
         </div>
 
         <section className="relative z-10 py-16 sm:py-24 px-4 sm:px-8 md:px-12 max-w-4xl">
-        <p className="text-[#849181] dark:text-[#a4aa9d] text-xs uppercase tracking-[0.2em] font-semibold mb-3">
-          Disponibilidade & Tipologias
-        </p>
-        <h1 className="font-heading text-4xl sm:text-6xl md:text-7xl font-normal leading-[0.98] tracking-tight">
-          Encontre o seu<br />
-          <em className="italic text-[#B88A2D]">jeito de viver.</em>
-        </h1>
-        <p className="text-base sm:text-lg text-[#73786e] dark:text-[#a4aa9d] leading-relaxed mt-6 font-light">
-          Conheça as casas autorais e a estrutura completa do Viverde Itaipava Résidences. Navegue pelas fotos de cada ambiente e escolha o seu espaço.
-        </p>
-      </section>
+          <p className="text-[#849181] dark:text-[#a4aa9d] text-xs uppercase tracking-[0.2em] font-semibold mb-3">
+            Disponibilidade & Tipologias
+          </p>
+          <h1 className="font-heading text-4xl sm:text-6xl md:text-7xl font-normal leading-[0.98] tracking-tight">
+            Encontre o seu<br />
+            <em className="italic text-[#B88A2D]">jeito de viver.</em>
+          </h1>
+          <p className="text-base sm:text-lg text-[#73786e] dark:text-[#a4aa9d] leading-relaxed mt-6 font-light">
+            Conheça as casas autorais e a estrutura completa do Viverde Itaipava Résidences. Navegue pelas fotos de cada ambiente e escolha o seu espaço.
+          </p>
+        </section>
 
-      <section className="relative z-10 pb-16 sm:pb-28 px-4 sm:px-8 md:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full">
-          {unitsData.map((unit) => {
-            const currentPhotoIdx = activePhotoIndices[unit.id] ?? 0
-            const currentPhoto = unit.photos[currentPhotoIdx] || unit.photos[0]
+        <section className="relative z-10 pb-16 sm:pb-28 px-4 sm:px-8 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full">
+            {unitsData.map((unit) => {
+              const currentPhotoIdx = activePhotoIndices[unit.id] ?? 0
+              const currentPhoto = unit.photos[currentPhotoIdx] || unit.photos[0]
 
-            return (
-              <article
-                key={unit.id}
-                className="flex flex-col transition-colors duration-300 w-full"
-              >
+              return (
+                <article
+                  key={unit.id}
+                  className="flex flex-col transition-colors duration-300 w-full"
+                >
                 <div
                   className="relative aspect-4/3 sm:aspect-[16/10] rounded-2xl overflow-hidden bg-black/10 cursor-pointer group select-none"
                   onClick={() => setLightboxUnit({ unitId: unit.id, photoIdx: currentPhotoIdx })}
