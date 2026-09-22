@@ -56,14 +56,14 @@ export function PageCurtainLoader() {
     >
       <div className="relative w-full max-w-[1760px] h-full overflow-hidden flex items-center justify-center">
         <div
-          className={`absolute inset-x-0 top-0 h-[50.5%] bg-[#f4f2ed] dark:bg-[#161616] transition-transform duration-800 ease-[cubic-bezier(0.76,0,0.24,1)] z-10 ${
-            isOpening ? '-translate-y-full' : 'translate-y-0'
+          className={`absolute inset-y-0 left-0 w-[50.5%] bg-[#f4f2ed] dark:bg-[#161616] transition-transform duration-800 ease-[cubic-bezier(0.76,0,0.24,1)] z-10 ${
+            isOpening ? '-translate-x-full' : 'translate-x-0'
           }`}
         />
 
         <div
-          className={`absolute inset-x-0 bottom-0 h-[50.5%] bg-[#f4f2ed] dark:bg-[#161616] transition-transform duration-800 ease-[cubic-bezier(0.76,0,0.24,1)] z-10 ${
-            isOpening ? 'translate-y-full' : 'translate-y-0'
+          className={`absolute inset-y-0 right-0 w-[50.5%] bg-[#f4f2ed] dark:bg-[#161616] transition-transform duration-800 ease-[cubic-bezier(0.76,0,0.24,1)] z-10 ${
+            isOpening ? 'translate-x-full' : 'translate-x-0'
           }`}
         />
 
