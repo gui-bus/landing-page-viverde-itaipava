@@ -75,7 +75,7 @@ export function FilmsSection({ onSelectFilm }: FilmsSectionProps) {
       </div>
 
       <div
-        className="flex flex-col lg:flex-row w-full h-[720px] sm:h-[780px] lg:h-[640px] overflow-hidden rounded-xs shadow-2xl bg-[#161914]"
+        className="flex flex-col lg:flex-row w-full h-[720px] sm:h-[780px] lg:h-[640px] overflow-hidden rounded-xs shadow-2xl bg-[#161616]"
         onMouseLeave={handleMouseLeave}
       >
         {filmsData.map((film, i) => {
@@ -146,7 +146,7 @@ export function FilmsSection({ onSelectFilm }: FilmsSectionProps) {
                   <button
                     type="button"
                     onClick={(e) => handleOpenFullscreen(e, i)}
-                    className="w-8 h-8 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/20 flex items-center justify-center hover:bg-[#B88A2D] hover:text-[#161914] transition-all cursor-pointer"
+                    className="w-8 h-8 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/20 flex items-center justify-center hover:bg-[#B88A2D] hover:text-[#161616] transition-all cursor-pointer"
                     aria-label={`Ver ${film.title} em tela cheia`}
                   >
                     <Maximize2 size={14} />

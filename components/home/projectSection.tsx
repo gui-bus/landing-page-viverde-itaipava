@@ -93,7 +93,7 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
           </p>
           <a
             href="/unidades"
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-[#161914] dark:text-[#c7b88d] hover:underline"
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-[#161616] dark:text-[#c7b88d] hover:underline"
           >
             Ver plantas e disponibilidade <ArrowUpRight size={14} />
           </a>
@@ -114,7 +114,7 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
               type="button"
               className={`px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-semibold transition-all cursor-pointer flex items-center gap-2 ${
                 isActive
-                  ? 'bg-[#161914] text-white dark:bg-[#B88A2D] dark:text-[#161914] shadow-md'
+                  ? 'bg-[#161616] text-white dark:bg-[#B88A2D] dark:text-[#161616] shadow-md'
                   : 'border border-black/15 dark:border-white/15 text-[#73786e] dark:text-[#a4aa9d] hover:border-black/40 hover:text-black dark:hover:text-white bg-transparent'
               }`}
               onClick={() => handleCategoryChange(cat.id)}
@@ -194,7 +194,7 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
           <button
             type="button"
             onClick={handleToggleExpand}
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#161914] dark:bg-[#B88A2D] text-white dark:text-[#161914] text-xs uppercase tracking-widest font-semibold hover:bg-[#24271d] dark:hover:bg-[#c7b88d] transition-all duration-300 shadow-md hover:shadow-xl hover:scale-[1.02] cursor-pointer"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#161616] dark:bg-[#B88A2D] text-white dark:text-[#161616] text-xs uppercase tracking-widest font-semibold hover:bg-[#24271d] dark:hover:bg-[#c7b88d] transition-all duration-300 shadow-md hover:shadow-xl hover:scale-[1.02] cursor-pointer"
           >
             <span>
               {isExpanded

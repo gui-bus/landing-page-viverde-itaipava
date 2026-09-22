@@ -105,16 +105,16 @@ export function WhatsappWidget() {
         >
           {isOpen && (
             <div
-              className="absolute bottom-full right-0 mb-3 w-72 sm:w-80 rounded-2xl bg-white/95 dark:bg-[#161914]/95 p-3.5 shadow-2xl backdrop-blur-xl origin-bottom-right border border-black/10 dark:border-white/10 animate-[fadeInUp_0.25s_ease-out]"
+              className="absolute bottom-full right-0 mb-3 w-72 sm:w-80 rounded-2xl bg-white/95 dark:bg-[#161616]/95 p-3.5 shadow-2xl backdrop-blur-xl origin-bottom-right border border-black/10 dark:border-white/10 animate-[fadeInUp_0.25s_ease-out]"
             >
               <div className="flex items-center justify-between px-2.5 py-2 border-b border-black/5 dark:border-white/10 mb-2.5">
                 <div className="flex items-center gap-2">
                   <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#161914] opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#161914]" />
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#161616] opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#161616]" />
                   </span>
                   <div>
-                    <p className="text-[10px] font-bold text-[#161914] dark:text-[#8ea98c] uppercase tracking-wider">
+                    <p className="text-[10px] font-bold text-[#161616] dark:text-[#c7b88d] uppercase tracking-wider">
                       Atendimento Viverde
                     </p>
                     <p className="text-xs font-bold text-[#24271d] dark:text-white">
@@ -133,7 +133,7 @@ export function WhatsappWidget() {
                     setIsOpen(false)
                     setIsHovered(false)
                   }}
-                  className="p-1 rounded-lg text-[#161914]/60 hover:text-[#161914] dark:text-white/60 dark:hover:text-white transition-colors cursor-pointer"
+                  className="p-1 rounded-lg text-[#161616]/60 hover:text-[#161616] dark:text-white/60 dark:hover:text-white transition-colors cursor-pointer"
                   aria-label="Fechar popup do WhatsApp"
                 >
                   <X size={14} />
@@ -148,10 +148,10 @@ export function WhatsappWidget() {
                       key={option.id}
                       type="button"
                       onClick={() => handleSelectOption(option.message)}
-                      className="w-full p-2.5 rounded-xl hover:bg-[#161914]/5 dark:hover:bg-white/5 transition-all flex items-center justify-between text-left group/item cursor-pointer"
+                      className="w-full p-2.5 rounded-xl hover:bg-[#161616]/5 dark:hover:bg-white/5 transition-all flex items-center justify-between text-left group/item cursor-pointer"
                     >
                       <div className="flex items-center gap-3 min-w-0">
-                        <div className="p-2 rounded-lg bg-[#161914]/10 text-[#161914] dark:bg-[#161914]/30 dark:text-[#8ea98c] shrink-0">
+                        <div className="p-2 rounded-lg bg-[#161616]/10 text-[#161616] dark:bg-white/10 dark:text-[#c7b88d] shrink-0">
                           <IconComponent size={16} />
                         </div>
                         <span className="text-xs font-semibold text-[#24271d] dark:text-white block">
@@ -161,7 +161,7 @@ export function WhatsappWidget() {
 
                       <ArrowUpRight
                         size={14}
-                        className="text-[#161914]/50 group-hover/item:text-[#161914] dark:text-white/40 dark:group-hover/item:text-white group-hover/item:translate-x-0.5 group-hover/item:-translate-y-0.5 transition-transform shrink-0 ml-1.5"
+                        className="text-[#161616]/50 group-hover/item:text-[#161616] dark:text-white/40 dark:group-hover/item:text-white group-hover/item:translate-x-0.5 group-hover/item:-translate-y-0.5 transition-transform shrink-0 ml-1.5"
                       />
                     </button>
                   )
