@@ -14,7 +14,7 @@ export function ConceptSection() {
         <div className="lg:col-span-5">
           <h2 className="font-heading text-4xl sm:text-6xl md:text-7xl font-normal leading-[0.98] tracking-tight">
             Menos pressa.<br />
-            Mais <em className="italic text-[#b7a77f]">presença.</em>
+            Mais <em className="italic text-[#B88A2D]">presença.</em>
           </h2>
         </div>
         <div className="lg:col-span-4 lg:pt-3">
@@ -23,34 +23,60 @@ export function ConceptSection() {
           </p>
           <a
             href="#galeria"
-            className="inline-flex items-center gap-2 border-b border-current pb-1 mt-6 text-xs uppercase tracking-widest font-semibold hover:text-[#b7a77f] transition-colors"
+            className="inline-flex items-center gap-2 border-b border-current pb-1 mt-6 text-xs uppercase tracking-widest font-semibold hover:text-[#B88A2D] transition-colors"
           >
             Conheça o projeto <ArrowUpRight size={15} />
           </a>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-16 mt-16 border-t border-black/10 dark:border-white/10">
-        <div className="flex items-start gap-4 p-5 rounded-lg border border-black/5 dark:border-white/5 bg-black/[0.02] dark:bg-white/[0.02]">
-          <span className="text-2xl text-[#b7a77f]">✦</span>
-          <div>
-            <strong className="block text-sm sm:text-base font-semibold text-[#24271d] dark:text-[#f1efe8]">Casas de 3 e 4 suítes</strong>
-            <small className="text-xs text-[#73786e] dark:text-[#a4aa9d]">Espaços pensados para acolher</small>
-          </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 pt-16 mt-16 border-t border-black/10 dark:border-white/10">
+        <div className="space-y-2">
+          <span className="text-xs uppercase tracking-[0.2em] text-[#B88A2D] font-semibold block">
+            01
+          </span>
+          <h3 className="font-heading text-lg sm:text-xl font-medium text-[#24271d] dark:text-[#f1efe8]">
+            Casas de 3 e 4 suítes
+          </h3>
+          <p className="text-sm text-[#73786e] dark:text-[#a4aa9d] font-light leading-relaxed">
+            Projetos autorais com integração total, iluminação natural generosa e acabamentos em alto padrão.
+          </p>
         </div>
-        <div className="flex items-start gap-4 p-5 rounded-lg border border-black/5 dark:border-white/5 bg-black/[0.02] dark:bg-white/[0.02]">
-          <span className="text-2xl text-[#b7a77f]">⌂</span>
-          <div>
-            <strong className="block text-sm sm:text-base font-semibold text-[#24271d] dark:text-[#f1efe8]">Lazer privativo</strong>
-            <small className="text-xs text-[#73786e] dark:text-[#a4aa9d]">Piscina aquecida e jardim</small>
-          </div>
+
+        <div className="space-y-2">
+          <span className="text-xs uppercase tracking-[0.2em] text-[#B88A2D] font-semibold block">
+            02
+          </span>
+          <h3 className="font-heading text-lg sm:text-xl font-medium text-[#24271d] dark:text-[#f1efe8]">
+            Lazer privativo
+          </h3>
+          <p className="text-sm text-[#73786e] dark:text-[#a4aa9d] font-light leading-relaxed">
+            Piscina aquecida com deck, varanda gourmet e jardim privativos para relaxar com total privacidade.
+          </p>
         </div>
-        <div className="flex items-start gap-4 p-5 rounded-lg border border-black/5 dark:border-white/5 bg-black/[0.02] dark:bg-white/[0.02]">
-          <span className="text-2xl text-[#b7a77f]">◒</span>
-          <div>
-            <strong className="block text-sm sm:text-base font-semibold text-[#24271d] dark:text-[#f1efe8]">Segurança 24h</strong>
-            <small className="text-xs text-[#73786e] dark:text-[#a4aa9d]">Condomínio fechado exclusivo</small>
-          </div>
+
+        <div className="space-y-2">
+          <span className="text-xs uppercase tracking-[0.2em] text-[#B88A2D] font-semibold block">
+            03
+          </span>
+          <h3 className="font-heading text-lg sm:text-xl font-medium text-[#24271d] dark:text-[#f1efe8]">
+            Condomínio fechado
+          </h3>
+          <p className="text-sm text-[#73786e] dark:text-[#a4aa9d] font-light leading-relaxed">
+            Segurança 24h e infraestrutura subterrânea em localização privilegiada e silenciosa em Itaipava.
+          </p>
+        </div>
+
+        <div className="space-y-2">
+          <span className="text-xs uppercase tracking-[0.2em] text-[#B88A2D] font-semibold block">
+            04
+          </span>
+          <h3 className="font-heading text-lg sm:text-xl font-medium text-[#24271d] dark:text-[#f1efe8]">
+            Infraestrutura de lazer
+          </h3>
+          <p className="text-sm text-[#73786e] dark:text-[#a4aa9d] font-light leading-relaxed">
+            Salão de festas, churrasqueira, parquinho infantil, quadra poliesportiva e fogueira de chão ao ar livre.
+          </p>
         </div>
       </div>
     </section>

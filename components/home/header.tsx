@@ -15,22 +15,19 @@ export function Header() {
       </a>
 
       <nav className="hidden lg:flex items-center gap-7 text-[11px] uppercase tracking-widest font-semibold text-white/90">
-        <a href="#conceito" className="hover:text-[#b7a77f] transition-colors">
+        <a href="#conceito" className="hover:text-[#B88A2D] transition-colors">
           O conceito
         </a>
-        <a href="#galeria" className="hover:text-[#b7a77f] transition-colors">
+        <a href="#galeria" className="hover:text-[#B88A2D] transition-colors">
           Galeria
         </a>
-        <a href="#empreendimento" className="hover:text-[#b7a77f] transition-colors">
+        <a href="#empreendimento" className="hover:text-[#B88A2D] transition-colors">
           O empreendimento
         </a>
-        <a href="#filmes" className="hover:text-[#b7a77f] transition-colors">
+        <a href="#filmes" className="hover:text-[#B88A2D] transition-colors">
           Filmes
         </a>
-        <a href="#localizacao" className="hover:text-[#b7a77f] transition-colors">
-          Localização
-        </a>
-        <a href="/unidades" className="hover:text-[#b7a77f] transition-colors">
+        <a href="/unidades" className="hover:text-[#B88A2D] transition-colors">
           Unidades disponíveis
         </a>
         <a
