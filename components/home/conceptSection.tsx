@@ -4,20 +4,20 @@ import { ArrowUpRight } from 'lucide-react'
 
 export function ConceptSection() {
   return (
-    <section id="conceito" className="py-20 sm:py-28 md:py-36 px-4 sm:px-8 md:px-12 bg-transparent text-[#24271d] dark:text-[#f1efe8] transition-colors">
+    <section id="conceito" className="pt-16 pb-20 sm:pb-28 md:pb-36 px-4 sm:px-8 md:px-12 bg-transparent text-[#24271d] dark:text-[#f1efe8] transition-colors">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-        <div className="lg:col-span-3">
-          <p className="text-[#849181] dark:text-[#a4aa9d] text-xs uppercase tracking-[0.2em] font-semibold">
-            O conceito
-          </p>
-        </div>
-        <div className="lg:col-span-5">
+        <div className="lg:col-span-7 flex items-start gap-4 sm:gap-6">
+          <div className="shrink-0 pt-2">
+            <span className="text-[#849181] dark:text-[#a4aa9d] text-xs uppercase tracking-[0.25em] font-semibold [writing-mode:vertical-rl] rotate-180 select-none block">
+              O conceito
+            </span>
+          </div>
           <h2 className="font-heading text-4xl sm:text-6xl md:text-7xl font-normal leading-[0.98] tracking-tight">
             Menos pressa.<br />
             Mais <em className="italic text-[#B88A2D]">presença.</em>
           </h2>
         </div>
-        <div className="lg:col-span-4 lg:pt-3">
+        <div className="lg:col-span-5 lg:pt-3">
           <p className="text-base sm:text-lg text-[#73786e] dark:text-[#a4aa9d] leading-relaxed font-light">
             Entre montanhas, vales e uma natureza exuberante, nasce um lugar para viver com mais presença. O Viverde é o encontro delicado entre arquitetura, conforto e a liberdade de estar perto do que realmente importa.
           </p>
