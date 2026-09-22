@@ -24,19 +24,18 @@ export function HeroSection() {
 
       <Header />
 
-      <div className="relative z-10 px-4 sm:px-8 md:px-12 pt-8 sm:pt-12 md:pt-16 pb-16 sm:pb-20 md:pb-28 max-w-6xl">
+      <div className="relative z-10 py-20 pb-44! px-4 sm:px-8 md:px-12 flex flex-col items-center text-center max-w-3xl mx-auto">
         <p className="text-white/80 text-xs sm:text-sm uppercase tracking-widest mb-3 font-semibold">
           Um novo ritmo para a vida
         </p>
-        <h1 className="font-heading text-5xl sm:text-7xl md:text-8xl lg:text-9xl  tracking-tight leading-[0.92] text-white font-light">
-          Viver bem<br />
-          <em className="text-[#B88A2D] not-italic">muda tudo.</em>
+        <h1 className="font-heading text-5xl sm:text-7xl md:text-8xl tracking-tight leading-[0.92] text-white font-light">
+          Viver bem muda tudo
         </h1>
-        <p className="text-base sm:text-lg text-white/85 max-w-2xl mt-4 mb-6 leading-relaxed font-light">
+        <p className="text-base sm:text-lg text-white/85 max-w-2xl mt-4 mb-8 leading-relaxed font-light">
           Um refúgio contemporâneo entre montanhas, onde arquitetura, natureza e tempo encontram o mesmo endereço.
         </p>
 
-        <div className="flex flex-wrap items-center gap-6 sm:gap-10">
+        <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
           <a
             href="#conceito"
             className="inline-flex items-center gap-3 text-xs uppercase tracking-widest text-white hover:text-[#B88A2D] transition-colors group font-semibold"
@@ -46,7 +45,7 @@ export function HeroSection() {
             </span>
             Explorar o Viverde
           </a>
-          <span className="border-l border-white/40 pl-4 text-xs tracking-wider uppercase text-white/70 leading-relaxed font-medium">
+          <span className="border-l border-white/40 pl-4 text-xs tracking-wider uppercase text-white/70 leading-relaxed font-medium text-left">
             40 casas autorais<br />em condomínio fechado
           </span>
         </div>
