@@ -75,7 +75,7 @@ export function FilmsSection({ onSelectFilm }: FilmsSectionProps) {
       </div>
 
       <div
-        className="flex flex-col lg:flex-row w-full h-[720px] sm:h-[780px] lg:h-[640px] overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl bg-[#161914]"
+        className="flex flex-col lg:flex-row w-full h-[720px] sm:h-[780px] lg:h-[640px] overflow-hidden rounded-xs shadow-2xl bg-[#161914]"
         onMouseLeave={handleMouseLeave}
       >
         {filmsData.map((film, i) => {
@@ -127,7 +127,7 @@ export function FilmsSection({ onSelectFilm }: FilmsSectionProps) {
                   hideInfo ? 'opacity-0 pointer-events-none' : 'opacity-100'
                 }`}
               >
-                <span className="text-[10px] uppercase tracking-widest text-[#d8cca8] font-semibold bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+                <span className="text-[10px] uppercase tracking-widest text-white font-semibold bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/15 shadow-sm">
                   {film.label}
                 </span>
 
@@ -151,25 +151,15 @@ export function FilmsSection({ onSelectFilm }: FilmsSectionProps) {
                   >
                     <Maximize2 size={14} />
                   </button>
-
-                  <span className="text-xs font-semibold tracking-wider text-white/70">
-                    0{i + 1}
-                  </span>
                 </div>
               </div>
 
               <div
-                className={`relative z-20 flex items-center justify-center my-auto transition-opacity duration-500 ${
-                  hideInfo ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                className={`relative z-20 flex items-center justify-center my-auto transition-all duration-500 ${
+                  isActive || hideInfo ? 'opacity-0 pointer-events-none scale-75' : 'opacity-100 scale-100'
                 }`}
               >
-                <div
-                  className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-500 ${
-                    isActive
-                      ? 'bg-[#B88A2D] text-[#161914] scale-110 shadow-[0_0_25px_rgba(183,167,127,0.6)]'
-                      : 'bg-white/20 backdrop-blur-md text-white border border-white/30 group-hover:scale-110 group-hover:bg-white group-hover:text-black'
-                  }`}
-                >
+                <div className="w-14 h-14 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-md text-white border border-white/30 transition-all duration-500">
                   <Play fill="currentColor" size={20} className="translate-x-0.5" />
                 </div>
               </div>
@@ -179,9 +169,6 @@ export function FilmsSection({ onSelectFilm }: FilmsSectionProps) {
                   hideInfo ? 'opacity-0 pointer-events-none' : 'opacity-100'
                 }`}
               >
-                <p className="text-[11px] uppercase tracking-widest text-[#B88A2D] font-semibold mb-1">
-                  Perspectiva 0{i + 1}
-                </p>
                 <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-normal leading-tight text-white mb-2">
                   {film.title}
                 </h3>
