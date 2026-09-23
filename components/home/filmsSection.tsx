@@ -56,7 +56,7 @@ export function FilmsSection({ onSelectFilm }: FilmsSectionProps) {
 
   return (
     <section
-      id="filmes"
+      id="videos"
       className="py-20 sm:py-28 md:py-36 px-4 sm:px-8 md:px-12 text-[#24271d] dark:text-[#f1efe8] transition-colors"
     >
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 md:mb-14">

@@ -54,7 +54,7 @@ export function Footer() {
 
       <div className="relative z-10 py-14 sm:py-18 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
         <div className="lg:col-span-4 space-y-6">
-          <a href="#inicio" className="block w-36 sm:w-44">
+          <a href="/#inicio" className="block w-36 sm:w-44">
             <img
               src="/logo/logo_white.svg"
               alt="Viverde Itaipava"
@@ -79,22 +79,22 @@ export function Footer() {
           </p>
           <ul className="space-y-3 text-sm text-white/75 font-light">
             <li>
-              <a href="#conceito" className="hover:text-[#B88A2D] transition-colors">
+              <a href="/#conceito" className="hover:text-[#B88A2D] transition-colors">
                 O Conceito
               </a>
             </li>
             <li>
-              <a href="#galeria" className="hover:text-[#B88A2D] transition-colors">
+              <a href="/#galeria" className="hover:text-[#B88A2D] transition-colors">
                 Galeria & Entorno
               </a>
             </li>
             <li>
-              <a href="#empreendimento" className="hover:text-[#B88A2D] transition-colors">
+              <a href="/#empreendimento" className="hover:text-[#B88A2D] transition-colors">
                 O Empreendimento
               </a>
             </li>
             <li>
-              <a href="#filmes" className="hover:text-[#B88A2D] transition-colors">
+              <a href="/#videos" className="hover:text-[#B88A2D] transition-colors">
                 Perspectivas em Vídeo
               </a>
             </li>
@@ -104,7 +104,7 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href="#faq" className="hover:text-[#B88A2D] transition-colors">
+              <a href="/#faq" className="hover:text-[#B88A2D] transition-colors">
                 Dúvidas Frequentes
               </a>
             </li>

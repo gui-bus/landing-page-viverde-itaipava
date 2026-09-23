@@ -96,11 +96,11 @@ export function Header({ variant = 'hero', className = '' }: HeaderProps) {
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="text-white/80 hover:text-[#B88A2D] transition-colors py-1 flex items-center justify-between"
                   >
-                    <span>Projeto</span>
+                    <span>Empreendimento</span>
                     <span className="text-xs text-[#B88A2D]/80">03</span>
                   </a>
                   <a
-                    href="/#filmes"
+                    href="/#videos"
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="text-white/80 hover:text-[#B88A2D] transition-colors py-1 flex items-center justify-between"
                   >
@@ -197,9 +197,9 @@ export function Header({ variant = 'hero', className = '' }: HeaderProps) {
           Galeria
         </a>
         <a href="/#empreendimento" className="hover:text-[#B88A2D] transition-colors">
-          Projeto
+          Empreendimento
         </a>
-        <a href="/#filmes" className="hover:text-[#B88A2D] transition-colors">
+        <a href="/#videos" className="hover:text-[#B88A2D] transition-colors">
           Vídeos
         </a>
         <a href="/unidades" className="hover:text-[#B88A2D] transition-colors">

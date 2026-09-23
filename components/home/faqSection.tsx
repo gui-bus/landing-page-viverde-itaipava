@@ -49,7 +49,7 @@ const faqData: FAQItem[] = [
 ]
 
 export function FAQSection() {
-  const [openId, setOpenId] = useState<string | null>('lazer-privativo')
+  const [openId, setOpenId] = useState<string | null>(null)
 
   const toggleItem = (id: string) => {
     setOpenId((prev) => (prev === id ? null : id))
