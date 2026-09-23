@@ -41,7 +41,7 @@ export function GallerySection({ onSelectImage }: GallerySectionProps) {
       <div className="grid grid-cols-12 gap-4 sm:gap-6">
         {galleryData.map((item, i) => (
           <button
-            key={item.src + i}
+            key={item.src}
             type="button"
             className={`group relative overflow-hidden rounded-xs bg-black/10 cursor-pointer text-left shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 ${
               bentoSpans[i] || 'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px]'
@@ -52,6 +52,8 @@ export function GallerySection({ onSelectImage }: GallerySectionProps) {
             <img
               src={item.src}
               alt={item.alt}
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10 transition-opacity duration-300 group-hover:from-black/95 group-hover:via-black/45" />

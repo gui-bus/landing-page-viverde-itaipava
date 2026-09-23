@@ -16,6 +16,8 @@ export function PageCurtainLoader() {
     const duration = 1100
 
     let animationFrameId: number
+    let timeoutId1: ReturnType<typeof setTimeout>
+    let timeoutId2: ReturnType<typeof setTimeout>
 
     const step = (currentTime: number) => {
       const elapsed = currentTime - startTime
@@ -27,9 +29,9 @@ export function PageCurtainLoader() {
       if (rawProgress < 1) {
         animationFrameId = requestAnimationFrame(step)
       } else {
-        setTimeout(() => {
+        timeoutId1 = setTimeout(() => {
           setIsOpening(true)
-          setTimeout(() => {
+          timeoutId2 = setTimeout(() => {
             setIsComplete(true)
             document.body.style.overflow = ''
           }, 850)
@@ -41,6 +43,8 @@ export function PageCurtainLoader() {
 
     return () => {
       cancelAnimationFrame(animationFrameId)
+      clearTimeout(timeoutId1)
+      clearTimeout(timeoutId2)
       document.body.style.overflow = ''
     }
   }, [])

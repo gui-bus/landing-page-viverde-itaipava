@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { ArrowUpRight, BedDouble, ChevronLeft, ChevronRight, Maximize2, X } from 'lucide-react'
+import { useCallback, useState } from 'react'
+import { ArrowUpRight, ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { motion } from 'motion/react'
 import { Header } from '@/components/home/header'
 import { Footer } from '@/components/home/footer'
@@ -13,7 +13,10 @@ type UnitItem = {
   id: string
   title: string
   type: string
+  subtitle: string
+  status: string
   area: string
+  lot: string
   description: string
   photos: PhotoItem[]
   features: string[]
@@ -24,7 +27,10 @@ const unitsData: UnitItem[] = [
     id: 'casa-03',
     title: 'Casa 03 Suítes',
     type: '3 suítes · Lazer Privativo',
+    subtitle: '3 suítes · Piscina Aquecida · 2 Vagas',
+    status: 'Disponível',
     area: '218 m²',
+    lot: 'Lote individual',
     description: 'Arquitetura contemporânea com integração total entre living, varanda gourmet e piscina aquecida privativa emoldurada pelo verde.',
     photos: [
       { label: 'Fachada', src: '/viverde/casa-03-suites/casa_03_suites_fachada.webp', alt: 'Fachada da Casa 03 Suítes' },
@@ -42,7 +48,10 @@ const unitsData: UnitItem[] = [
     id: 'casa-04',
     title: 'Casa 04 Suítes',
     type: '4 suítes · Master com Closet',
+    subtitle: '4 suítes · Master com Closet · Pé-direito duplo',
+    status: 'Disponível',
     area: '286 m² a 312 m²',
+    lot: 'Lote individual',
     description: 'Espaços nobres, pé-direito imponente e vista privilegiada para as montanhas de Itaipava.',
     photos: [
       { label: 'Fachada', src: '/viverde/casa-04-suites/casa_04_suites_fachada.webp', alt: 'Fachada da Casa 04 Suítes' },
@@ -66,11 +75,7 @@ export default function UnidadesPage() {
 
   const [lightboxUnit, setLightboxUnit] = useState<{ unitId: string; photoIdx: number } | null>(null)
 
-  const setPhotoForUnit = (unitId: string, index: number) => {
-    setActivePhotoIndices((prev) => ({ ...prev, [unitId]: index }))
-  }
-
-  const handlePrevPhoto = (unitId: string, e?: React.MouseEvent) => {
+  const handlePrevPhoto = useCallback((unitId: string, e?: React.MouseEvent) => {
     if (e) e.stopPropagation()
     const unit = unitsData.find((u) => u.id === unitId)
     if (!unit) return
@@ -79,9 +84,9 @@ export default function UnidadesPage() {
       const next = (current - 1 + unit.photos.length) % unit.photos.length
       return { ...prev, [unitId]: next }
     })
-  }
+  }, [])
 
-  const handleNextPhoto = (unitId: string, e?: React.MouseEvent) => {
+  const handleNextPhoto = useCallback((unitId: string, e?: React.MouseEvent) => {
     if (e) e.stopPropagation()
     const unit = unitsData.find((u) => u.id === unitId)
     if (!unit) return
@@ -90,7 +95,7 @@ export default function UnidadesPage() {
       const next = (current + 1) % unit.photos.length
       return { ...prev, [unitId]: next }
     })
-  }
+  }, [])
 
   const currentUnitForLightbox = lightboxUnit ? unitsData.find((u) => u.id === lightboxUnit.unitId) : null
   const currentPhotoForLightbox = currentUnitForLightbox ? currentUnitForLightbox.photos[lightboxUnit!.photoIdx] : null
@@ -225,11 +230,15 @@ export default function UnidadesPage() {
           <img
             src="/logo/icon_black.svg"
             alt=""
+            loading="lazy"
+            decoding="async"
             className="w-full h-auto object-contain object-right-bottom dark:hidden"
           />
           <img
             src="/logo/icon_white.svg"
             alt=""
+            loading="lazy"
+            decoding="async"
             className="w-full h-auto object-contain object-right-bottom hidden dark:block"
           />
         </div>
@@ -265,6 +274,8 @@ export default function UnidadesPage() {
                   <img
                     src={currentPhoto.src}
                     alt={currentPhoto.alt}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
 

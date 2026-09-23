@@ -47,7 +47,7 @@ export function HeroSection() {
 
         <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
           <CtaButton
-            href="#conceito"
+            href="/#conceito"
             variant="dark-outline"
             size="md"
           >

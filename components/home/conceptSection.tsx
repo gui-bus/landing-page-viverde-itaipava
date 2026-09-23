@@ -3,6 +3,33 @@
 import { ArrowUpRight } from 'lucide-react'
 import { CtaButton } from '@/components/ui/ctaButton'
 
+const PILLARS = [
+  {
+    number: '01',
+    title: 'Casas de 3 e 4 suítes',
+    description:
+      'Projetos autorais com integração total, iluminação natural generosa e acabamentos em alto padrão.',
+  },
+  {
+    number: '02',
+    title: 'Lazer privativo',
+    description:
+      'Piscina aquecida com deck, varanda gourmet e jardim privativos para relaxar com total privacidade.',
+  },
+  {
+    number: '03',
+    title: 'Condomínio fechado',
+    description:
+      'Segurança 24h e infraestrutura subterrânea em localização privilegiada e silenciosa em Itaipava.',
+  },
+  {
+    number: '04',
+    title: 'Infraestrutura de lazer',
+    description:
+      'Salão de festas, churrasqueira, parquinho infantil, quadra poliesportiva e fogueira de chão ao ar livre.',
+  },
+]
+
 export function ConceptSection() {
   return (
     <section id="conceito" className="pt-16 pb-20 sm:pb-28 md:pb-36 px-4 sm:px-8 md:px-12 bg-transparent text-[#24271d] dark:text-[#f1efe8] transition-colors">
@@ -24,7 +51,7 @@ export function ConceptSection() {
           </p>
           <div className="mt-6">
             <CtaButton
-              href="#galeria"
+              href="/#galeria"
               variant="outline"
               size="sm"
             >
@@ -36,73 +63,24 @@ export function ConceptSection() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 pt-16 mt-16 border-t border-black/10 dark:border-white/10">
-        <div className="relative pt-6">
-          <span
-            aria-hidden="true"
-            className="font-heading font-black tabular-nums text-7xl sm:text-8xl lg:text-9xl text-black/[0.06] dark:text-white/[0.06] absolute -top-5 -left-1 select-none pointer-events-none leading-none tracking-tighter"
-          >
-            01
-          </span>
-          <div className="relative z-10 space-y-2">
-            <h3 className="font-heading text-lg sm:text-xl font-medium text-[#24271d] dark:text-[#f1efe8]">
-              Casas de 3 e 4 suítes
-            </h3>
-            <p className="text-sm text-[#73786e] dark:text-[#a4aa9d] font-light leading-relaxed">
-              Projetos autorais com integração total, iluminação natural generosa e acabamentos em alto padrão.
-            </p>
+        {PILLARS.map((pillar) => (
+          <div key={pillar.number} className="relative pt-6">
+            <span
+              aria-hidden="true"
+              className="font-heading font-black tabular-nums text-7xl sm:text-8xl lg:text-9xl text-black/[0.06] dark:text-white/[0.06] absolute -top-5 -left-1 select-none pointer-events-none leading-none tracking-tighter"
+            >
+              {pillar.number}
+            </span>
+            <div className="relative z-10 space-y-2">
+              <h3 className="font-heading text-lg sm:text-xl font-medium text-[#24271d] dark:text-[#f1efe8]">
+                {pillar.title}
+              </h3>
+              <p className="text-sm text-[#73786e] dark:text-[#a4aa9d] font-light leading-relaxed">
+                {pillar.description}
+              </p>
+            </div>
           </div>
-        </div>
-
-        <div className="relative pt-6">
-          <span
-            aria-hidden="true"
-            className="font-heading font-black tabular-nums text-7xl sm:text-8xl lg:text-9xl text-black/[0.06] dark:text-white/[0.06] absolute -top-5 -left-1 select-none pointer-events-none leading-none tracking-tighter"
-          >
-            02
-          </span>
-          <div className="relative z-10 space-y-2">
-            <h3 className="font-heading text-lg sm:text-xl font-medium text-[#24271d] dark:text-[#f1efe8]">
-              Lazer privativo
-            </h3>
-            <p className="text-sm text-[#73786e] dark:text-[#a4aa9d] font-light leading-relaxed">
-              Piscina aquecida com deck, varanda gourmet e jardim privativos para relaxar com total privacidade.
-            </p>
-          </div>
-        </div>
-
-        <div className="relative pt-6">
-          <span
-            aria-hidden="true"
-            className="font-heading font-black tabular-nums text-7xl sm:text-8xl lg:text-9xl text-black/[0.06] dark:text-white/[0.06] absolute -top-5 -left-1 select-none pointer-events-none leading-none tracking-tighter"
-          >
-            03
-          </span>
-          <div className="relative z-10 space-y-2">
-            <h3 className="font-heading text-lg sm:text-xl font-medium text-[#24271d] dark:text-[#f1efe8]">
-              Condomínio fechado
-            </h3>
-            <p className="text-sm text-[#73786e] dark:text-[#a4aa9d] font-light leading-relaxed">
-              Segurança 24h e infraestrutura subterrânea em localização privilegiada e silenciosa em Itaipava.
-            </p>
-          </div>
-        </div>
-
-        <div className="relative pt-6">
-          <span
-            aria-hidden="true"
-            className="font-heading font-black tabular-nums text-7xl sm:text-8xl lg:text-9xl text-black/[0.06] dark:text-white/[0.06] absolute -top-5 -left-1 select-none pointer-events-none leading-none tracking-tighter"
-          >
-            04
-          </span>
-          <div className="relative z-10 space-y-2">
-            <h3 className="font-heading text-lg sm:text-xl font-medium text-[#24271d] dark:text-[#f1efe8]">
-              Infraestrutura de lazer
-            </h3>
-            <p className="text-sm text-[#73786e] dark:text-[#a4aa9d] font-light leading-relaxed">
-              Salão de festas, churrasqueira, parquinho infantil, quadra poliesportiva e fogueira de chão ao ar livre.
-            </p>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   )

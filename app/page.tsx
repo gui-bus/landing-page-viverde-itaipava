@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { HeroSection } from '@/components/home/heroSection'
 import { ConceptSection } from '@/components/home/conceptSection'
 import { ManifestoSection } from '@/components/home/manifestoSection'
@@ -11,8 +11,15 @@ import { PartnersSection } from '@/components/home/partnersSection'
 import { FAQSection } from '@/components/home/faqSection'
 import { Footer } from '@/components/home/footer'
 import { LightboxModal } from '@/components/home/lightboxModal'
-import { filmsData, galleryData, projectImagesData } from '@/components/home/data'
+import { filmsData, galleryData } from '@/components/home/data'
 import type { GalleryItem, ProjectImageItem } from '@/components/home/types'
+
+const filmGalleryItems: GalleryItem[] = filmsData.map((f) => ({
+  src: f.image,
+  alt: `${f.title} — ${f.label}`,
+  tag: f.label,
+  video: f.video,
+}))
 
 export default function Page() {
   const [selectedGallery, setSelectedGallery] = useState<number | null>(null)
@@ -22,21 +29,19 @@ export default function Page() {
   } | null>(null)
   const [selectedFilm, setSelectedFilm] = useState<number | null>(null)
 
-  const activeGalleryItems: GalleryItem[] =
-    selectedFilm !== null
-      ? filmsData.map((f) => ({
-          src: f.image,
-          alt: `${f.title} — ${f.label}`,
-          tag: f.label,
-          video: f.video,
-        }))
-      : selectedProject !== null
-      ? selectedProject.list.map((item) => ({
-          src: item.src,
-          alt: item.alt,
-          tag: item.tag,
-        }))
-      : galleryData
+  const activeGalleryItems = useMemo<GalleryItem[]>(() => {
+    if (selectedFilm !== null) {
+      return filmGalleryItems
+    }
+    if (selectedProject !== null) {
+      return selectedProject.list.map((item) => ({
+        src: item.src,
+        alt: item.alt,
+        tag: item.tag,
+      }))
+    }
+    return galleryData
+  }, [selectedFilm, selectedProject])
 
   const activeIndex =
     selectedFilm !== null
@@ -45,28 +50,31 @@ export default function Page() {
       ? selectedProject.index
       : selectedGallery
 
-  const handleCloseLightbox = () => {
+  const handleCloseLightbox = useCallback(() => {
     setSelectedGallery(null)
     setSelectedProject(null)
     setSelectedFilm(null)
-  }
+  }, [])
 
-  const handleMoveLightbox = (delta: number) => {
+  const handleMoveLightbox = useCallback((delta: number) => {
     if (selectedFilm !== null) {
       const total = filmsData.length
-      setSelectedFilm((selectedFilm + delta + total) % total)
+      setSelectedFilm((prev) => (prev !== null ? (prev + delta + total) % total : 0))
     } else if (selectedProject !== null) {
       const total = selectedProject.list.length
-      setSelectedProject({
-        index: (selectedProject.index + delta + total) % total,
-        list: selectedProject.list,
-      })
-    } else if (selectedGallery !== null) {
-      setSelectedGallery(
-        (selectedGallery + delta + galleryData.length) % galleryData.length
+      setSelectedProject((prev) =>
+        prev
+          ? {
+              index: (prev.index + delta + total) % total,
+              list: prev.list,
+            }
+          : null
       )
+    } else if (selectedGallery !== null) {
+      const total = galleryData.length
+      setSelectedGallery((prev) => (prev !== null ? (prev + delta + total) % total : 0))
     }
-  }
+  }, [selectedFilm, selectedProject, selectedGallery])
 
   useEffect(() => {
     document.body.style.overflow = activeIndex !== null ? 'hidden' : ''

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { ArrowUpRight, ChevronDown, ChevronUp } from 'lucide-react'
 import { motion, AnimatePresence } from 'motion/react'
 import { projectCategoriesData, projectImagesData } from './data'
@@ -17,14 +17,25 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
   const [activeCategory, setActiveCategory] = useState<string>('todos')
   const [isExpanded, setIsExpanded] = useState<boolean>(false)
 
-  const filteredProjects =
-    activeCategory === 'todos'
+  const categoryCounts = useMemo(() => {
+    const counts: Record<string, number> = { todos: projectImagesData.length }
+    for (const p of projectImagesData) {
+      counts[p.category] = (counts[p.category] || 0) + 1
+    }
+    return counts
+  }, [])
+
+  const filteredProjects = useMemo(() => {
+    return activeCategory === 'todos'
       ? projectImagesData
       : projectImagesData.filter((item) => item.category === activeCategory)
+  }, [activeCategory])
 
-  const visibleProjects = isExpanded
-    ? filteredProjects
-    : filteredProjects.slice(0, INITIAL_COUNT)
+  const visibleProjects = useMemo(() => {
+    return isExpanded
+      ? filteredProjects
+      : filteredProjects.slice(0, INITIAL_COUNT)
+  }, [isExpanded, filteredProjects])
 
   const hasMore = filteredProjects.length > INITIAL_COUNT
 
@@ -60,22 +71,23 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
     return 'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px]'
   }
 
-  const handleCategoryChange = (catId: string) => {
+  const handleCategoryChange = useCallback((catId: string) => {
     setActiveCategory(catId)
     setIsExpanded(false)
-  }
+  }, [])
 
-  const handleToggleExpand = () => {
-    if (isExpanded) {
-      setIsExpanded(false)
-      const sectionEl = document.getElementById('empreendimento')
-      if (sectionEl) {
-        sectionEl.scrollIntoView({ behavior: 'smooth' })
+  const handleToggleExpand = useCallback(() => {
+    setIsExpanded((prev) => {
+      if (prev) {
+        const sectionEl = document.getElementById('empreendimento')
+        if (sectionEl) {
+          sectionEl.scrollIntoView({ behavior: 'smooth' })
+        }
+        return false
       }
-    } else {
-      setIsExpanded(true)
-    }
-  }
+      return true
+    })
+  }, [])
 
   return (
     <section
@@ -111,10 +123,7 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
       <div className="flex flex-wrap gap-2 sm:gap-3 mb-10">
         {projectCategoriesData.map((cat) => {
           const isActive = activeCategory === cat.id
-          const count =
-            cat.id === 'todos'
-              ? projectImagesData.length
-              : projectImagesData.filter((p) => p.category === cat.id).length
+          const count = categoryCounts[cat.id] ?? 0
 
           return (
             <button
@@ -149,7 +158,7 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
 
             return (
               <motion.button
-                key={item.src + activeCategory}
+                key={item.src}
                 type="button"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -162,6 +171,8 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
                 <img
                   src={item.src}
                   alt={item.alt}
+                  loading="lazy"
+                  decoding="async"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10 transition-opacity duration-300 group-hover:from-black/95 group-hover:via-black/45" />

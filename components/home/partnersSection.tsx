@@ -49,7 +49,7 @@ export function PartnersSection() {
         <div className="flex w-max items-center gap-12 sm:gap-20 md:gap-28 animate-[marquee_25s_linear_infinite] hover:[animation-play-state:paused] py-4">
           {marqueeList.map((partner, index) => (
             <a
-              key={partner.name + index}
+              key={`${partner.name}-${index}`}
               href={partner.url}
               target="_blank"
               rel="noopener noreferrer"
@@ -63,11 +63,15 @@ export function PartnersSection() {
                 <img
                   src={partner.lightLogo}
                   alt={partner.name}
-                  className="h-8 sm:h-10 md:h-12 w-auto max-w-[160px] sm:max-w-[200px] object-contain block dark:hidden  transition-opacity duration-300"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-8 sm:h-10 md:h-12 w-auto max-w-[160px] sm:max-w-[200px] object-contain block dark:hidden transition-opacity duration-300"
                 />
                 <img
                   src={partner.darkLogo}
                   alt={partner.name}
+                  loading="lazy"
+                  decoding="async"
                   className="h-8 sm:h-10 md:h-12 w-auto max-w-[160px] sm:max-w-[200px] object-contain hidden dark:block transition-opacity duration-300"
                 />
               </div>

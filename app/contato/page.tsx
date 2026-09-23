@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { ArrowUpRight, Check, MapPin, Phone } from 'lucide-react'
 import { Header } from '@/components/home/header'
 import { Footer } from '@/components/home/footer'
@@ -9,10 +9,10 @@ import { CtaButton } from '@/components/ui/ctaButton'
 export default function ContatoPage() {
   const [submitted, setSubmitted] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault()
     setSubmitted(true)
-  }
+  }, [])
 
   return (
     <main className="w-full bg-[#f4f2ed] dark:bg-[#161616] text-[#24271d] dark:text-[#f1efe8] transition-colors min-h-screen">
@@ -26,11 +26,15 @@ export default function ContatoPage() {
           <img
             src="/logo/icon_black.svg"
             alt=""
+            loading="lazy"
+            decoding="async"
             className="w-full h-auto object-contain object-right-bottom dark:hidden"
           />
           <img
             src="/logo/icon_white.svg"
             alt=""
+            loading="lazy"
+            decoding="async"
             className="w-full h-auto object-contain object-right-bottom hidden dark:block"
           />
         </div>
@@ -102,10 +106,13 @@ export default function ContatoPage() {
                 className="space-y-6"
               >
                 <div>
-                  <label className="block text-[11px] uppercase tracking-wider font-semibold text-[#161616] dark:text-[#f1efe8] mb-2">
+                  <label htmlFor="name" className="block text-[11px] uppercase tracking-wider font-semibold text-[#161616] dark:text-[#f1efe8] mb-2">
                     Nome completo
                   </label>
                   <input
+                    id="name"
+                    name="name"
+                    autoComplete="name"
                     required
                     type="text"
                     placeholder="Como podemos te chamar?"
@@ -115,10 +122,13 @@ export default function ContatoPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-[11px] uppercase tracking-wider font-semibold text-[#161616] dark:text-[#f1efe8] mb-2">
+                    <label htmlFor="email" className="block text-[11px] uppercase tracking-wider font-semibold text-[#161616] dark:text-[#f1efe8] mb-2">
                       E-mail
                     </label>
                     <input
+                      id="email"
+                      name="email"
+                      autoComplete="email"
                       required
                       type="email"
                       placeholder="seu@email.com"
@@ -126,10 +136,13 @@ export default function ContatoPage() {
                     />
                   </div>
                   <div>
-                    <label className="block text-[11px] uppercase tracking-wider font-semibold text-[#161616] dark:text-[#f1efe8] mb-2">
+                    <label htmlFor="phone" className="block text-[11px] uppercase tracking-wider font-semibold text-[#161616] dark:text-[#f1efe8] mb-2">
                       Telefone / WhatsApp
                     </label>
                     <input
+                      id="phone"
+                      name="phone"
+                      autoComplete="tel"
                       required
                       type="tel"
                       placeholder="(00) 00000-0000"
@@ -139,10 +152,12 @@ export default function ContatoPage() {
                 </div>
 
                 <div>
-                  <label className="block text-[11px] uppercase tracking-wider font-semibold text-[#161616] dark:text-[#f1efe8] mb-2">
+                  <label htmlFor="message" className="block text-[11px] uppercase tracking-wider font-semibold text-[#161616] dark:text-[#f1efe8] mb-2">
                     Mensagem ou unidade de interesse
                   </label>
                   <textarea
+                    id="message"
+                    name="message"
                     required
                     rows={4}
                     placeholder="Conte um pouco sobre o que você procura (ex: Casa de 3 ou 4 suítes, agendamento de visita...)"

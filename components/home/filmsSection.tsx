@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Film, Maximize2, Volume2, VolumeX } from 'lucide-react'
 import { filmsData } from './data'
 
@@ -13,7 +13,17 @@ export function FilmsSection({ onSelectFilm }: FilmsSectionProps) {
   const [isMuted, setIsMuted] = useState<boolean>(true)
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
 
-  const handleMouseEnter = (index: number) => {
+  useEffect(() => {
+    return () => {
+      videoRefs.current.forEach((video) => {
+        if (video) {
+          video.pause()
+        }
+      })
+    }
+  }, [])
+
+  const handleMouseEnter = useCallback((index: number) => {
     setHoveredIndex(index)
     videoRefs.current.forEach((video, i) => {
       if (!video) return
@@ -26,33 +36,35 @@ export function FilmsSection({ onSelectFilm }: FilmsSectionProps) {
         video.currentTime = 0
       }
     })
-  }
+  }, [isMuted])
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     setHoveredIndex(null)
     videoRefs.current.forEach((video) => {
       if (!video) return
       video.pause()
       video.currentTime = 0
     })
-  }
+  }, [])
 
-  const handleToggleMute = (e: React.MouseEvent) => {
+  const handleToggleMute = useCallback((e: React.MouseEvent) => {
     e.stopPropagation()
-    const nextMuted = !isMuted
-    setIsMuted(nextMuted)
-    if (hoveredIndex !== null && videoRefs.current[hoveredIndex]) {
-      videoRefs.current[hoveredIndex]!.muted = nextMuted
-    }
-  }
+    setIsMuted((prev) => {
+      const nextMuted = !prev
+      if (hoveredIndex !== null && videoRefs.current[hoveredIndex]) {
+        videoRefs.current[hoveredIndex]!.muted = nextMuted
+      }
+      return nextMuted
+    })
+  }, [hoveredIndex])
 
-  const handleOpenFullscreen = (e: React.MouseEvent, index: number) => {
+  const handleOpenFullscreen = useCallback((e: React.MouseEvent, index: number) => {
     e.stopPropagation()
     if (videoRefs.current[index]) {
       videoRefs.current[index]!.pause()
     }
     onSelectFilm(index)
-  }
+  }, [onSelectFilm])
 
   return (
     <section
@@ -85,7 +97,7 @@ export function FilmsSection({ onSelectFilm }: FilmsSectionProps) {
 
           return (
             <div
-              key={film.title + i}
+              key={film.title}
               onMouseEnter={() => handleMouseEnter(i)}
               onClick={(e) => handleOpenFullscreen(e, i)}
               style={{
@@ -98,6 +110,8 @@ export function FilmsSection({ onSelectFilm }: FilmsSectionProps) {
               <img
                 src={film.image}
                 alt={film.title}
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
               />
 
