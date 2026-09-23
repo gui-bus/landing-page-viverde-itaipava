@@ -170,6 +170,44 @@ export default function ContatoPage() {
             </div>
           </div>
         </section>
+
+        <section className="relative z-10 pb-20 sm:pb-28 px-4 sm:px-8 md:px-12">
+          <div className="w-full space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+              <div>
+                <p className="text-[#849181] dark:text-[#a4aa9d] text-xs uppercase tracking-[0.2em] font-semibold mb-2 flex items-center gap-2">
+                  <MapPin size={14} className="text-[#B88A2D]" /> Localização
+                </p>
+                <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-normal tracking-tight">
+                  Como chegar ao <em className="italic text-[#B88A2D]">Viverde.</em>
+                </h2>
+              </div>
+              <a
+                href="https://maps.google.com/?q=Rua+Neuza+Goulart+Brizola,+2005+-+Itaipava,+Petr%C3%B3polis+-+RJ"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-[#161616] dark:text-[#c7b88d] hover:underline shrink-0"
+              >
+                <span>Abrir no Google Maps</span>
+                <ArrowUpRight size={14} />
+              </a>
+            </div>
+
+            <div className="relative w-full h-[450px] sm:h-[540px] md:h-[600px] rounded-2xl sm:rounded-3xl overflow-hidden border border-black/10 dark:border-white/10 shadow-xl bg-black/5">
+              <iframe
+                title="Localização do Viverde Itaipava"
+                src="https://maps.google.com/maps?q=Rua+Neuza+Goulart+Brizola,+2005+-+Itaipava,+Petr%C3%B3polis+-+RJ&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full"
+              />
+            </div>
+          </div>
+        </section>
       </div>
 
       <Footer />

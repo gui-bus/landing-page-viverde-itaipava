@@ -28,7 +28,7 @@ const sizeClasses: Record<CtaButtonSize, string> = {
 }
 
 const variantClasses: Record<CtaButtonVariant, string> = {
-  primary: 'bg-[#B88A2D] text-[#161616] border-0 shadow-md hover:shadow-lg',
+  primary: 'bg-[#B88A2D] text-white border-0 shadow-md hover:shadow-lg',
   secondary:
     'bg-[#161616] text-white dark:bg-[#f1efe8] dark:text-[#161616] border-0 shadow-sm hover:shadow-md',
   outline:
@@ -45,7 +45,7 @@ const defaultSliderClasses: Record<CtaButtonVariant, string> = {
 }
 
 const defaultTextClasses: Record<CtaButtonVariant, string> = {
-  primary: 'text-[#161616]',
+  primary: 'text-white',
   secondary: 'text-white dark:text-[#161616]',
   outline: 'text-[#24271d] dark:text-[#f1efe8]',
   'dark-outline': 'text-white',

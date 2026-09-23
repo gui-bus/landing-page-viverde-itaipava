@@ -23,16 +23,8 @@ const faqData: FAQItem[] = [
       'Sim. Todas as 40 casas do Viverde Itaipava são entregues completas, com deck em madeira nobre, piscina aquecida privativa e varanda gourmet integrada ao living e jardim, prontas para desfrutar desde o primeiro dia.',
   },
   {
-    id: 'cronograma-obras',
-    number: '02',
-    tag: 'Cronograma & Obra',
-    question: 'Qual é o status jurídico e a previsão de entrega das obras?',
-    answer:
-      'O empreendimento conta com Memorial de Incorporação prenotado sob o nº 31236 no cartório do 10º Ofício de Petrópolis e projeto de construção devidamente aprovado na Prefeitura sob o nº 26.531/23. As obras seguem cronograma rigoroso com entregas programadas por fases.',
-  },
-  {
     id: 'personalizacao',
-    number: '03',
+    number: '02',
     tag: 'Personalização',
     question: 'É possível personalizar os acabamentos ou layout interno da casa?',
     answer:
@@ -40,27 +32,19 @@ const faqData: FAQItem[] = [
   },
   {
     id: 'seguranca-acesso',
-    number: '04',
+    number: '03',
     tag: 'Segurança 24h',
     question: 'Como funciona a segurança e o controle de acesso do condomínio?',
     answer:
       'O condomínio dispõe de guarita blindada, controle de acesso tecnológico 24h com biometria facial, infraestrutura perimetral inteligente com monitoramento de alta resolução e equipe treinada para assegurar máxima privacidade e proteção.',
   },
   {
-    id: 'fiacao-subterranea',
-    number: '05',
-    tag: 'Infraestrutura',
-    question: 'Toda a infraestrutura e rede elétrica são subterrâneas?',
+    id: 'cronograma-obras',
+    number: '04',
+    tag: 'Cronograma & Jurídico',
+    question: 'Qual é o status jurídico e a previsão de entrega das obras?',
     answer:
-      'Sim. Toda a rede de energia elétrica, dados, telefonia e iluminação das vias internas é 100% subterrânea. Isso elimina a poluição visual de postes e fiações, preservando a vista panorâmica para a natureza e as montanhas.',
-  },
-  {
-    id: 'locacao-temporada',
-    number: '06',
-    tag: 'Uso & Convenção',
-    question: 'Como é regulamentada a locação e o convívio no condomínio?',
-    answer:
-      'A convenção do condomínio foi desenhada com foco na preservação do sossego, da harmonia e da valorização patrimonial. Locações de temporada são regidas por normas claras de segurança e identificação prévia de hóspedes junto à administração.',
+      'O empreendimento conta com Memorial de Incorporação prenotado sob o nº 31236 no cartório do 10º Ofício de Petrópolis e projeto de construção devidamente aprovado na Prefeitura sob o nº 26.531/23. As obras seguem cronograma rigoroso com entregas programadas por fases.',
   },
 ]
 
@@ -76,8 +60,8 @@ export function FAQSection() {
       id="faq"
       className="py-20 sm:py-28 md:py-36 px-4 sm:px-8 md:px-12 bg-transparent text-[#24271d] dark:text-[#f1efe8] transition-colors"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-        <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="lg:col-span-5 space-y-8">
           <div>
             <span className="inline-flex items-center text-[10px] sm:text-xs uppercase tracking-[0.25em] text-[#B88A2D] font-semibold mb-3 px-3.5 py-1.5 rounded-full bg-[#B88A2D]/10 border border-[#B88A2D]/20">
               Esclarecimentos & Dúvidas
@@ -91,7 +75,7 @@ export function FAQSection() {
             </p>
           </div>
 
-          <div className="rounded-2xl p-6 sm:p-7 bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 space-y-4">
+          <div className="space-y-4 pt-2">
             <div className="flex items-center gap-3">
               <span className="w-10 h-10 rounded-full bg-[#B88A2D]/15 text-[#B88A2D] flex items-center justify-center shrink-0">
                 <MessageSquare size={18} />
@@ -106,17 +90,16 @@ export function FAQSection() {
               </div>
             </div>
 
-            <CtaButton
-              href="https://wa.me/5521997862692?text=Ol%C3%A1%2C%20gostaria%20de%20tirar%20algumas%20d%C3%BAvidas%20sobre%20o%20Viverde%20Itaipava."
-              variant="primary"
-              isFullWidth
-              size="md"
-            >
-              <span className="flex items-center justify-between w-full">
+            <div>
+              <CtaButton
+                href="https://wa.me/5521997862692?text=Ol%C3%A1%2C%20gostaria%20de%20tirar%20algumas%20d%C3%BAvidas%20sobre%20o%20Viverde%20Itaipava."
+                variant="primary"
+                size="md"
+              >
                 <span>Falar no WhatsApp</span>
                 <ArrowUpRight size={15} />
-              </span>
-            </CtaButton>
+              </CtaButton>
+            </div>
           </div>
         </div>
 
