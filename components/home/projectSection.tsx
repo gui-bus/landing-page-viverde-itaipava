@@ -204,7 +204,7 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
       {hasMore && (
         <div className="mt-12 sm:mt-16 flex flex-col items-center justify-center gap-3">
           <CtaButton
-            variant="secondary"
+            variant="outline"
             size="md"
             onClick={handleToggleExpand}
           >
