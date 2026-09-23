@@ -1,6 +1,7 @@
 'use client'
 
 import { ArrowUpRight } from 'lucide-react'
+import { CtaButton } from '@/components/ui/ctaButton'
 
 export function ConceptSection() {
   return (
@@ -21,12 +22,16 @@ export function ConceptSection() {
           <p className="text-base sm:text-lg text-[#73786e] dark:text-[#a4aa9d] leading-relaxed font-light">
             Entre montanhas, vales e uma natureza exuberante, nasce um lugar para viver com mais presença. O Viverde é o encontro delicado entre arquitetura, conforto e a liberdade de estar perto do que realmente importa.
           </p>
-          <a
-            href="#galeria"
-            className="inline-flex items-center gap-2 border-b border-current pb-1 mt-6 text-xs uppercase tracking-widest font-semibold hover:text-[#B88A2D] transition-colors"
-          >
-            Conheça o projeto <ArrowUpRight size={15} />
-          </a>
+          <div className="mt-6">
+            <CtaButton
+              href="#galeria"
+              variant="outline"
+              size="sm"
+            >
+              <span>Conheça o projeto</span>
+              <ArrowUpRight size={14} />
+            </CtaButton>
+          </div>
         </div>
       </div>
 

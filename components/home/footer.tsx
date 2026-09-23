@@ -1,6 +1,7 @@
 'use client'
 
 import { ArrowUp, ArrowUpRight, MapPin, Phone } from 'lucide-react'
+import { CtaButton } from '@/components/ui/ctaButton'
 
 export function Footer() {
   const scrollToTop = () => {
@@ -31,20 +32,22 @@ export function Footer() {
             </h2>
           </div>
           <div className="flex flex-wrap items-center gap-4">
-            <a
+            <CtaButton
               href="https://wa.me/5521997862692?text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Viverde%20Itaipava."
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#B88A2D] hover:bg-[#c7b88d] text-[#161616] text-xs uppercase tracking-widest font-semibold transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105"
+              variant="primary"
+              size="md"
             >
-              Falar no WhatsApp <ArrowUpRight size={15} />
-            </a>
-            <a
+              <span>Falar no WhatsApp</span>
+              <ArrowUpRight size={15} />
+            </CtaButton>
+            <CtaButton
               href="/unidades"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/20 hover:border-white text-white text-xs uppercase tracking-widest font-semibold transition-all duration-300 hover:bg-white/5"
+              variant="dark-outline"
+              size="md"
             >
-              Ver Plantas <ArrowUpRight size={15} />
-            </a>
+              <span>Ver Plantas</span>
+              <ArrowUpRight size={15} />
+            </CtaButton>
           </div>
         </div>
       </div>

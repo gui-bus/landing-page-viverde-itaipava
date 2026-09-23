@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { ArrowUpRight, Check, MapPin, Phone } from 'lucide-react'
 import { Header } from '@/components/home/header'
 import { Footer } from '@/components/home/footer'
+import { CtaButton } from '@/components/ui/ctaButton'
 
 export default function ContatoPage() {
   const [submitted, setSubmitted] = useState(false)
@@ -101,7 +102,7 @@ export default function ContatoPage() {
                 className="space-y-6"
               >
                 <div>
-                  <label className="block text-[11px] uppercase tracking-wider font-semibold text-[#849181] dark:text-[#a4aa9d] mb-2">
+                  <label className="block text-[11px] uppercase tracking-wider font-semibold text-[#161616] dark:text-[#f1efe8] mb-2">
                     Nome completo
                   </label>
                   <input
@@ -114,7 +115,7 @@ export default function ContatoPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-[11px] uppercase tracking-wider font-semibold text-[#849181] dark:text-[#a4aa9d] mb-2">
+                    <label className="block text-[11px] uppercase tracking-wider font-semibold text-[#161616] dark:text-[#f1efe8] mb-2">
                       E-mail
                     </label>
                     <input
@@ -125,7 +126,7 @@ export default function ContatoPage() {
                     />
                   </div>
                   <div>
-                    <label className="block text-[11px] uppercase tracking-wider font-semibold text-[#849181] dark:text-[#a4aa9d] mb-2">
+                    <label className="block text-[11px] uppercase tracking-wider font-semibold text-[#161616] dark:text-[#f1efe8] mb-2">
                       Telefone / WhatsApp
                     </label>
                     <input
@@ -138,7 +139,7 @@ export default function ContatoPage() {
                 </div>
 
                 <div>
-                  <label className="block text-[11px] uppercase tracking-wider font-semibold text-[#849181] dark:text-[#a4aa9d] mb-2">
+                  <label className="block text-[11px] uppercase tracking-wider font-semibold text-[#161616] dark:text-[#f1efe8] mb-2">
                     Mensagem ou unidade de interesse
                   </label>
                   <textarea
@@ -150,13 +151,15 @@ export default function ContatoPage() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
-                  <button
+                  <CtaButton
                     type="submit"
-                    className="w-full sm:w-auto px-9 py-4 bg-[#161616] dark:bg-[#B88A2D] hover:bg-[#B88A2D] dark:hover:bg-[#9e7421] text-white hover:text-white text-xs uppercase tracking-widest font-semibold rounded-full transition-all duration-300 shadow-md hover:shadow-xl flex items-center justify-center gap-2 cursor-pointer"
+                    variant="secondary"
+                    size="md"
+                    className="w-full sm:w-auto"
                   >
                     <span>Enviar mensagem</span>
                     <ArrowUpRight size={16} />
-                  </button>
+                  </CtaButton>
 
                   <p className="text-[11px] text-[#73786e] dark:text-[#a4aa9d] flex items-center gap-2 font-light">
                     <Check size={14} className="text-[#B88A2D]" /> Seus dados estão protegidos.

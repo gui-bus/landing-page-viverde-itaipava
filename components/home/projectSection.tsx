@@ -5,6 +5,7 @@ import { ArrowUpRight, ChevronDown, ChevronUp } from 'lucide-react'
 import { motion, AnimatePresence } from 'motion/react'
 import { projectCategoriesData, projectImagesData } from './data'
 import type { ProjectImageItem } from './types'
+import { CtaButton } from '@/components/ui/ctaButton'
 
 export interface ProjectSectionProps {
   onSelectProject: (index: number, filteredList: ProjectImageItem[]) => void
@@ -94,12 +95,16 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
           <p className="text-sm sm:text-base text-[#73786e] dark:text-[#a4aa9d] leading-relaxed mb-3 font-light">
             Casas autorais de 3 e 4 suítes, lazer privativo e estrutura completa de condomínio fechado para transformar sua rotina em bem-estar.
           </p>
-          <a
-            href="/unidades"
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-[#161616] dark:text-[#c7b88d] hover:underline"
-          >
-            Ver plantas e disponibilidade <ArrowUpRight size={14} />
-          </a>
+          <div className="mt-3">
+            <CtaButton
+              href="/unidades"
+              variant="outline"
+              size="sm"
+            >
+              <span>Ver plantas e disponibilidade</span>
+              <ArrowUpRight size={14} />
+            </CtaButton>
+          </div>
         </div>
       </div>
 
@@ -187,10 +192,10 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
 
       {hasMore && (
         <div className="mt-12 sm:mt-16 flex flex-col items-center justify-center gap-3">
-          <button
-            type="button"
+          <CtaButton
+            variant="secondary"
+            size="md"
             onClick={handleToggleExpand}
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#161616] dark:bg-[#B88A2D] text-white dark:text-[#161616] text-xs uppercase tracking-widest font-semibold hover:bg-[#24271d] dark:hover:bg-[#c7b88d] transition-all duration-300 shadow-md hover:shadow-xl hover:scale-[1.02] cursor-pointer"
           >
             <span>
               {isExpanded
@@ -198,7 +203,7 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
                 : `Ver mais fotos (${filteredProjects.length - INITIAL_COUNT})`}
             </span>
             {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-          </button>
+          </CtaButton>
           <p className="text-xs text-[#73786e] dark:text-[#a4aa9d] font-light">
             Exibindo {visibleProjects.length} de {filteredProjects.length} fotos do empreendimento
           </p>

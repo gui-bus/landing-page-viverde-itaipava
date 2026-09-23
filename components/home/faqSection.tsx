@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { ArrowUpRight, MessageSquare, Plus } from 'lucide-react'
 import { motion, AnimatePresence } from 'motion/react'
+import { CtaButton } from '@/components/ui/ctaButton'
 
 interface FAQItem {
   id: string
@@ -105,15 +106,17 @@ export function FAQSection() {
               </div>
             </div>
 
-            <a
+            <CtaButton
               href="https://wa.me/5521997862692?text=Ol%C3%A1%2C%20gostaria%20de%20tirar%20algumas%20d%C3%BAvidas%20sobre%20o%20Viverde%20Itaipava."
-              target="_blank"
-              rel="noreferrer"
-              className="w-full py-3.5 px-6 rounded-full bg-[#161616] dark:bg-[#B88A2D] hover:bg-[#B88A2D] dark:hover:bg-[#9e7421] text-white hover:text-white dark:text-[#161616] dark:hover:text-[#161616] text-xs uppercase tracking-widest font-semibold flex items-center justify-between transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer"
+              variant="primary"
+              isFullWidth
+              size="md"
             >
-              <span>Falar no WhatsApp</span>
-              <ArrowUpRight size={15} />
-            </a>
+              <span className="flex items-center justify-between w-full">
+                <span>Falar no WhatsApp</span>
+                <ArrowUpRight size={15} />
+              </span>
+            </CtaButton>
           </div>
         </div>
 

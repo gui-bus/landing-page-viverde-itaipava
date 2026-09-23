@@ -3,6 +3,7 @@
 import { ArrowDown } from 'lucide-react'
 import { motion } from 'motion/react'
 import { Header } from './header'
+import { CtaButton } from '@/components/ui/ctaButton'
 
 export function HeroSection() {
   return (
@@ -45,15 +46,14 @@ export function HeroSection() {
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
-          <a
+          <CtaButton
             href="#conceito"
-            className="inline-flex items-center gap-3 text-xs uppercase tracking-widest text-white hover:text-[#B88A2D] transition-colors group font-semibold"
+            variant="dark-outline"
+            size="md"
           >
-            <span className="w-9 h-9 rounded-full border border-white/50 flex items-center justify-center group-hover:border-[#B88A2D] transition-colors">
-              <ArrowDown size={15} />
-            </span>
-            Explorar o Viverde
-          </a>
+            <span>Explorar o Viverde</span>
+            <ArrowDown size={14} />
+          </CtaButton>
           <span className="border-l border-white/40 pl-4 text-xs tracking-wider uppercase text-white/70 leading-relaxed font-medium text-left">
             40 casas autorais<br />em condomínio fechado
           </span>

@@ -5,6 +5,7 @@ import { ArrowUpRight, BedDouble, ChevronLeft, ChevronRight, Maximize2, X } from
 import { motion } from 'motion/react'
 import { Header } from '@/components/home/header'
 import { Footer } from '@/components/home/footer'
+import { CtaButton } from '@/components/ui/ctaButton'
 
 type PhotoItem = { label: string; src: string; alt: string }
 
@@ -350,15 +351,17 @@ export default function UnidadesPage() {
                     </div>
                   </div>
 
-                  <a
-                    className="w-full py-4 px-6 bg-[#161616] dark:bg-[#B88A2D] hover:bg-[#B88A2D] dark:hover:bg-[#9e7421] text-white hover:text-white text-xs uppercase tracking-widest font-semibold flex items-center justify-between rounded-full transition-all duration-300 shadow-md hover:shadow-xl cursor-pointer"
+                  <CtaButton
                     href={`https://wa.me/5521997862692?text=${encodeURIComponent(`Olá! Gostaria de consultar a disponibilidade da ${unit.title} no Viverde Itaipava.`)}`}
-                    target="_blank"
-                    rel="noreferrer"
+                    variant="primary"
+                    isFullWidth
+                    size="md"
                   >
-                    <span>Tenho interesse</span>
-                    <ArrowUpRight size={16} />
-                  </a>
+                    <span className="flex items-center justify-between w-full">
+                      <span>Tenho interesse</span>
+                      <ArrowUpRight size={16} />
+                    </span>
+                  </CtaButton>
                 </div>
               </article>
             )

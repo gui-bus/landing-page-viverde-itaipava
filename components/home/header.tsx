@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { ArrowUpRight, MapPin, Menu, Phone, X } from 'lucide-react'
 import { AnimatedThemeToggler } from '@/components/ui/animatedThemeToggler'
+import { CtaButton } from '@/components/ui/ctaButton'
 
 export interface HeaderProps {
   variant?: 'hero' | 'default'
@@ -118,13 +119,16 @@ export function Header({ variant = 'hero', className = '' }: HeaderProps) {
               </div>
 
               <div className="pt-6 border-t border-white/10 space-y-4">
-                <a
+                <CtaButton
                   href="/contato"
+                  variant="primary"
+                  isFullWidth
+                  size="md"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-full py-3.5 rounded-full bg-[#B88A2D] hover:bg-[#c7b88d] text-[#161616] text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 transition-all shadow-lg"
                 >
-                  Fale com a gente <ArrowUpRight size={14} />
-                </a>
+                  <span>Fale com a gente</span>
+                  <ArrowUpRight size={14} />
+                </CtaButton>
 
                 <div className="space-y-2 text-xs text-white/60 font-light pt-2">
                   <p className="flex items-center gap-2">
@@ -208,16 +212,15 @@ export function Header({ variant = 'hero', className = '' }: HeaderProps) {
           isHero ? 'text-white' : 'text-[#24271d] dark:text-[#f1efe8]'
         }`}
       >
-        <a
+        <CtaButton
           href="/contato"
-          className={`hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[11px] uppercase tracking-wider font-semibold transition-all duration-300 ${
-            isHero
-              ? 'bg-white/10 hover:bg-white hover:text-black border border-white/20 text-white'
-              : 'bg-black/5 dark:bg-white/10 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black border border-black/10 dark:border-white/20 text-[#24271d] dark:text-[#f1efe8]'
-          }`}
+          size="sm"
+          variant={isHero ? 'dark-outline' : 'outline'}
+          className="hidden sm:inline-flex"
         >
-          Fale com a gente <ArrowUpRight size={14} />
-        </a>
+          <span>Fale com a gente</span>
+          <ArrowUpRight size={14} />
+        </CtaButton>
 
         <AnimatedThemeToggler
           className={`border-0 ${

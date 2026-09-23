@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
-import { Film, Maximize2, Play, Volume2, VolumeX } from 'lucide-react'
+import { Film, Maximize2, Volume2, VolumeX } from 'lucide-react'
 import { filmsData } from './data'
 
 export interface FilmsSectionProps {
@@ -151,16 +151,6 @@ export function FilmsSection({ onSelectFilm }: FilmsSectionProps) {
                   >
                     <Maximize2 size={14} />
                   </button>
-                </div>
-              </div>
-
-              <div
-                className={`relative z-20 flex items-center justify-center my-auto transition-all duration-500 ${
-                  isActive || hideInfo ? 'opacity-0 pointer-events-none scale-75' : 'opacity-100 scale-100'
-                }`}
-              >
-                <div className="w-14 h-14 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-md text-white border border-white/30 transition-all duration-500">
-                  <Play fill="currentColor" size={20} className="translate-x-0.5" />
                 </div>
               </div>
 
