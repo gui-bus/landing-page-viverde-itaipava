@@ -8,6 +8,7 @@ import { GallerySection } from '@/components/home/gallerySection'
 import { ProjectSection } from '@/components/home/projectSection'
 import { FilmsSection } from '@/components/home/filmsSection'
 import { PartnersSection } from '@/components/home/partnersSection'
+import { FAQSection } from '@/components/home/faqSection'
 import { Footer } from '@/components/home/footer'
 import { LightboxModal } from '@/components/home/lightboxModal'
 import { filmsData, galleryData, projectImagesData } from '@/components/home/data'
@@ -102,6 +103,8 @@ export default function Page() {
       <FilmsSection onSelectFilm={(index) => setSelectedFilm(index)} />
 
       <PartnersSection />
+
+      <FAQSection />
 
       <Footer />
     </main>

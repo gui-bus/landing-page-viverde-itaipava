@@ -100,6 +100,11 @@ export function Footer() {
                 Unidades & Plantas
               </a>
             </li>
+            <li>
+              <a href="#faq" className="hover:text-[#B88A2D] transition-colors">
+                Dúvidas Frequentes
+              </a>
+            </li>
           </ul>
         </div>
 
