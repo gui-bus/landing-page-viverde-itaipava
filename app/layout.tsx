@@ -1,10 +1,17 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Plus_Jakarta_Sans } from 'next/font/google'
+import { Montserrat, Plus_Jakarta_Sans } from 'next/font/google'
 import { WhatsappWidget } from '@/components/ui/whatsappWidget'
 import { PageCurtainLoader } from '@/components/ui/pageCurtainLoader'
 import { SectionScrollSpy } from '@/components/ui/sectionScrollSpy'
 import './globals.css'
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-heading',
+  display: 'swap',
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+})
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -32,7 +39,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR" className={`${plusJakartaSans.variable} scroll-smooth`} suppressHydrationWarning>
+    <html
+      lang="pt-BR"
+      className={`${plusJakartaSans.variable} ${montserrat.variable} scroll-smooth`}
+      suppressHydrationWarning
+    >
       <head>
         <script
           dangerouslySetInnerHTML={{

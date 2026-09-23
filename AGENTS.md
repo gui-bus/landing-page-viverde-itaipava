@@ -13,9 +13,9 @@
 - **Component Naming**: Always use **camelCase** for component file names (e.g., `heroSection.tsx`, `conceptSection.tsx`, `lightboxModal.tsx`, `animatedThemeToggler.tsx`).
 
 ## 3. Typography Policy
-- **Headings (`h1-h6`, `.font-heading`)**: Exclusively **Gotham** font family.
+- **Headings (`h1-h6`, `.font-heading`)**: Exclusively **Montserrat** (`next/font/google`).
 - **Body & General UI**: Exclusively **Plus Jakarta Sans** (`next/font/google`).
-- **Forbidden Fonts**: Never use Montserrat, Georgia, or `font-serif`.
+- **Forbidden Fonts**: Never use Georgia or `font-serif`.
 
 ## 4. Styling & Tailwind CSS
 - **Pure Tailwind CSS**: Avoid custom CSS in `globals.css`. Use `@theme`, `@custom-variant`, and utility classes.
