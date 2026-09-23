@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { ArrowUpRight, BedDouble, ChevronLeft, ChevronRight, Maximize2, X } from 'lucide-react'
+import { motion } from 'motion/react'
 import { Header } from '@/components/home/header'
 import { Footer } from '@/components/home/footer'
 
@@ -68,7 +69,8 @@ export default function UnidadesPage() {
     setActivePhotoIndices((prev) => ({ ...prev, [unitId]: index }))
   }
 
-  const handlePrevPhoto = (unitId: string) => {
+  const handlePrevPhoto = (unitId: string, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation()
     const unit = unitsData.find((u) => u.id === unitId)
     if (!unit) return
     setActivePhotoIndices((prev) => {
@@ -78,7 +80,8 @@ export default function UnidadesPage() {
     })
   }
 
-  const handleNextPhoto = (unitId: string) => {
+  const handleNextPhoto = (unitId: string, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation()
     const unit = unitsData.find((u) => u.id === unitId)
     if (!unit) return
     setActivePhotoIndices((prev) => {
@@ -106,7 +109,7 @@ export default function UnidadesPage() {
           >
             <button
               type="button"
-              className="absolute top-6 right-6 w-11 h-11 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white hover:text-black transition-colors cursor-pointer z-10"
+              className="absolute top-6 right-6 w-11 h-11 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white hover:text-black transition-colors cursor-pointer z-20"
               onClick={() => setLightboxUnit(null)}
               aria-label="Fechar"
             >
@@ -115,7 +118,7 @@ export default function UnidadesPage() {
 
             <button
               type="button"
-              className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white hover:text-black transition-colors cursor-pointer z-10"
+              className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white hover:text-black transition-colors cursor-pointer z-20"
               onClick={(e) => {
                 e.stopPropagation()
                 setLightboxUnit({
@@ -128,17 +131,42 @@ export default function UnidadesPage() {
               <ChevronLeft size={24} />
             </button>
 
-            <div className="relative max-w-5xl max-h-[80vh] flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+            <motion.div
+              key={lightboxUnit.photoIdx}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.25}
+              onDragEnd={(_, info) => {
+                const swipeThreshold = 50
+                if (info.offset.x < -swipeThreshold) {
+                  setLightboxUnit({
+                    unitId: lightboxUnit.unitId,
+                    photoIdx: (lightboxUnit.photoIdx + 1) % currentUnitForLightbox.photos.length,
+                  })
+                } else if (info.offset.x > swipeThreshold) {
+                  setLightboxUnit({
+                    unitId: lightboxUnit.unitId,
+                    photoIdx: (lightboxUnit.photoIdx - 1 + currentUnitForLightbox.photos.length) % currentUnitForLightbox.photos.length,
+                  })
+                }
+              }}
+              initial={{ opacity: 0.85, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.2 }}
+              className="relative max-w-5xl max-h-[78vh] flex items-center justify-center cursor-grab active:cursor-grabbing select-none touch-pan-y"
+              onClick={(e) => e.stopPropagation()}
+            >
               <img
                 src={currentPhotoForLightbox.src}
                 alt={currentPhotoForLightbox.alt}
-                className="max-w-full max-h-[80vh] object-contain rounded-md shadow-2xl"
+                draggable={false}
+                className="max-w-full max-h-[78vh] object-contain rounded-md shadow-2xl pointer-events-none select-none"
               />
-            </div>
+            </motion.div>
 
             <button
               type="button"
-              className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white hover:text-black transition-colors cursor-pointer z-10"
+              className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white hover:text-black transition-colors cursor-pointer z-20"
               onClick={(e) => {
                 e.stopPropagation()
                 setLightboxUnit({
@@ -151,10 +179,36 @@ export default function UnidadesPage() {
               <ChevronRight size={24} />
             </button>
 
-            <div className="mt-4 text-center text-white/80 text-xs sm:text-sm uppercase tracking-widest">
-              <span>{currentUnitForLightbox.title}</span>
-              <span className="mx-2">·</span>
-              <span className="font-medium text-white">{currentPhotoForLightbox.label}</span>
+            <div className="mt-4 flex flex-col items-center gap-3 z-20 select-none">
+              {currentUnitForLightbox.photos.length > 1 && (
+                <div className="flex items-center justify-center gap-1.5 flex-wrap max-w-md px-4">
+                  {currentUnitForLightbox.photos.map((_, dotIdx) => (
+                    <button
+                      key={dotIdx}
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        setLightboxUnit({
+                          unitId: lightboxUnit.unitId,
+                          photoIdx: dotIdx,
+                        })
+                      }}
+                      aria-label={`Ir para foto ${dotIdx + 1}`}
+                      className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                        dotIdx === lightboxUnit.photoIdx
+                          ? 'w-6 bg-white shadow-sm'
+                          : 'w-1.5 bg-white/40 hover:bg-white/80'
+                      }`}
+                    />
+                  ))}
+                </div>
+              )}
+
+              <div className="text-center text-white/80 text-xs sm:text-sm uppercase tracking-widest font-medium">
+                <span>{currentUnitForLightbox.title}</span>
+                <span className="mx-2">·</span>
+                <span className="font-semibold text-white">{currentPhotoForLightbox.label}</span>
+              </div>
             </div>
           </div>
         </div>
