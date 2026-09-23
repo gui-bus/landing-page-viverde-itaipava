@@ -28,21 +28,35 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
   const hasMore = filteredProjects.length > INITIAL_COUNT
 
   const getBentoSpan = (index: number, total: number) => {
-    if (total === 1) return 'col-span-12 min-h-[380px] sm:min-h-[480px]'
-    if (total === 2) return 'col-span-12 sm:col-span-6 min-h-[320px] sm:min-h-[420px]'
+    if (total === 1) {
+      return 'col-span-12 min-h-[380px] sm:min-h-[480px]'
+    }
+    if (total === 2) {
+      return 'col-span-12 sm:col-span-6 min-h-[320px] sm:min-h-[420px]'
+    }
+    if (total === 4) {
+      if (index === 0) return 'col-span-12 lg:col-span-8 min-h-[340px] sm:min-h-[420px] lg:min-h-[460px]'
+      if (index === 1) return 'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[320px] lg:min-h-[460px]'
+      return 'col-span-12 sm:col-span-6 min-h-[280px] sm:min-h-[340px]'
+    }
+    if (total === 6) {
+      if (index === 0) return 'col-span-12 lg:col-span-8 min-h-[340px] sm:min-h-[420px] lg:min-h-[460px]'
+      if (index === 1) return 'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[320px] lg:min-h-[460px]'
+      if (index === 5) return 'col-span-12 min-h-[340px] sm:min-h-[420px] lg:min-h-[460px]'
+      return 'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px]'
+    }
+    if (total === 8) {
+      if (index === 0) return 'col-span-12 lg:col-span-8 min-h-[340px] sm:min-h-[420px] lg:min-h-[460px]'
+      if (index === 1) return 'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[320px] lg:min-h-[460px]'
+      return 'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px]'
+    }
 
-    const pattern = [
-      'col-span-12 lg:col-span-8 min-h-[340px] sm:min-h-[420px] lg:min-h-[460px]',
-      'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[320px] lg:min-h-[460px]',
-      'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px]',
-      'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px]',
-      'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px]',
-      'col-span-12 lg:col-span-8 min-h-[340px] sm:min-h-[420px] lg:min-h-[460px]',
-      'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px]',
-      'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px]',
-      'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px]',
-    ]
-    return pattern[index % pattern.length]
+    const mod = index % 5
+    if (index === total - 1 && mod === 0) {
+      return 'col-span-12 min-h-[340px] sm:min-h-[420px] lg:min-h-[460px]'
+    }
+    if (mod === 0) return 'col-span-12 lg:col-span-8 min-h-[340px] sm:min-h-[420px] lg:min-h-[460px]'
+    return 'col-span-12 sm:col-span-6 lg:col-span-4 min-h-[260px] sm:min-h-[300px]'
   }
 
   const handleCategoryChange = (catId: string) => {
@@ -125,7 +139,8 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
         <AnimatePresence mode="wait">
           {visibleProjects.map((item, i) => {
             const originalIndex = filteredProjects.findIndex((p) => p.src === item.src)
-            const isLarge = i === 0 || i === 5
+            const spanClass = getBentoSpan(i, visibleProjects.length)
+            const isLarge = spanClass.includes('lg:col-span-8') || spanClass.includes('col-span-12 min-h-')
 
             return (
               <motion.button
@@ -135,9 +150,7 @@ export function ProjectSection({ onSelectProject }: ProjectSectionProps) {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.25 }}
-                className={`group relative overflow-hidden rounded-xs bg-black/10 cursor-pointer text-left shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 ${
-                  getBentoSpan(i, visibleProjects.length)
-                }`}
+                className={`group relative overflow-hidden rounded-xs bg-black/10 cursor-pointer text-left shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 ${spanClass}`}
                 onClick={() => onSelectProject(originalIndex >= 0 ? originalIndex : i, filteredProjects)}
                 aria-label={`Abrir ${item.title}`}
               >
